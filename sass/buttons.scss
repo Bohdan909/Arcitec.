@@ -1,0 +1,108 @@
+
+/* --------------------
+    Buttons
+    ------------------- */   
+
+.btn-g, .btn {
+	@extend .trans;
+	display: inline-block;
+	position: relative;
+	height: 45px;
+	line-height: 45px;
+	white-space: nowrap;
+	text-align: center;
+	border: none;
+	text-decoration: none;
+	text-transform: uppercase;
+	letter-spacing: 1.5px;
+}
+
+// Gradient
+.btn-g {
+	color: #fff;
+
+	span {
+		@extend .trans;
+		display: block;
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+	}
+
+	span.btn-bg {
+		background-image: -moz-linear-gradient( 0deg, rgb(193,230,247) 0%, rgb(4,134,193) 100%);
+        background-image: -webkit-linear-gradient( 0deg, rgb(193,230,247) 0%, rgb(4,134,193) 100%);
+        background-image: -ms-linear-gradient( 0deg, rgb(193,230,247) 0%, rgb(4,134,193) 100%);
+	}
+
+	span.btn-bg-hover {
+		opacity: 0;
+        background-image: -moz-linear-gradient( 0deg, rgb(4,134,193) 0%, rgb(193,230,247) 100%);
+        background-image: -webkit-linear-gradient( 0deg, rgb(4,134,193) 0%, rgb(193,230,247) 100%);
+        background-image: -ms-linear-gradient( 0deg, rgb(4,134,193) 0%, rgb(193,230,247) 100%);
+	}
+
+	&:hover {
+
+		span.btn-bg {
+			opacity: 0;
+		}
+
+		span.btn-bg-hover {
+			opacity: 1;
+		}
+	}
+
+	i {
+		position: relative;
+		z-index: 1;
+		font-style: normal;
+		font-family: $textMed;
+	}
+}    
+
+.btn-c-mask {
+	height: 45px;
+	overflow: hidden;
+	clip-path: polygon(0 0, 100% 0, 96% 100%, 4% 100%);
+	-webkit-clip-path: polygon(0 0, 100% 0, 96% 100%, 4% 100%);
+}    
+
+// Default
+.btn {
+	padding: 0 25px;
+	background-color: $colDark;
+	color: #fff;
+
+	&:hover {
+		background-color: #1d93c8;
+	}
+}
+
+.btn-c-right {
+	padding: 0;
+	background: none !important;
+
+	span {
+		@extend .trans;
+		padding: 0 45px 0 25px;
+		display: block;
+		height: 100%;
+		overflow: hidden;
+		background-color: $colDark;
+		-webkit-clip-path: polygon(0 0, 100% 0%, 90% 100%, 0% 100%);
+		clip-path: polygon(0 0, 100% 0%, 90% 100%, 0% 100%);
+	}
+
+	&:hover {
+
+		span {
+			padding-right: 25px;
+			background-color: #1d93c8 !important;		
+			-webkit-clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+			clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);	
+		}
+	}
+}
