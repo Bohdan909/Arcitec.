@@ -2,7 +2,8 @@ document.documentElement.className = document.documentElement.className.replace(
 
 (function($){
 
-    $(function() {
+    $(function(){
+
 
         var $btnMenu  = document.querySelector(".btn-menu");
         var $menu     = document.querySelector(".menu");
@@ -21,7 +22,7 @@ document.documentElement.className = document.documentElement.className.replace(
 
                 document.querySelector(".header-mask").classList.add("return"); 
 
-                setTimeout( () => { this.addScroll() }, 2000);
+                setTimeout( () => { menu.addScroll() }, 2000);
 
                 menu.close();
             });
@@ -137,6 +138,7 @@ document.documentElement.className = document.documentElement.className.replace(
  
         }());
 
+
         // Placeholder Hide
         $("input, textarea").focus(function(){
            $(this).data("placeholder",$(this).attr("placeholder")).attr("placeholder","");
@@ -171,19 +173,6 @@ document.documentElement.className = document.documentElement.className.replace(
             $("").attr("style", "");
         } 
             
-    };
-
-    // Click Out
-    function ClickOut(element){
-        this.element = element;
-        
-        this.removeClass = function(class_){
-            $(document).on("click", function(event) {
-                if ($(event.target).closest(element).length) return;
-                $(element).removeClass(class_);
-                event.stopPropagation();
-            });
-        };
     };
 
     // forEach for IE

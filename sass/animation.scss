@@ -3,6 +3,49 @@
     ------------------- */ 
 
 
+$d: 60px;
+
+// .slide-up {
+//     @include transition(all, 1.0s, ease-out);
+// }
+
+.slide-up {
+    transform: translate3d(0, $d, 0);
+    
+    .animate &, &.animate {
+        -webkit-animation: slide-up 1.3s ease-out forwards;
+            -ms-animation: slide-up 1.3s ease-out forwards;
+                animation: slide-up 1.3s ease-out forwards;
+    }
+}
+
+.animate-item {
+    display: block;
+}
+
+@keyframes slide-up {
+  from {
+    transform: translate3d(0, $d, 0);
+    visibility: visible;
+  }
+
+  to {
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+
+/* --------------------
+    Parallax
+    ------------------- */ 
+
+$easing: cubic-bezier(0, 0, 0, 1.18);
+
+.parallax {
+    @include transition(transform, 1.5s, ease-out);
+    position: relative;
+}
+
 /* --------------------
     Title Header
     ------------------- */   
@@ -287,10 +330,53 @@
     Masks
     ------------------- */ 
 
-.image-mask {
+.image {
     overflow: hidden;
+}
+
+.slide-mask {
+    @include transition(all, 1.6s, ease-out);
+    @include delay(0.5s);
+    
+    -webkit-clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+    clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+
+    overflow: hidden;
+
+    &.animate, .animate & {
+        -webkit-clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+        clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+    }
 
     img {
         display: block;
     }
 }
+
+
+.team-member {
+    
+    .bg span {
+        @include transition(height, 0.7s, ease-out);
+        @include delay(0.5s);
+        height: 0px;
+    }
+
+    .image img {
+        @include transition(opacity, 1.0s, linear);
+        opacity: 0;
+        display: inline-block;
+    }
+
+    .animate & {
+
+        .bg span {
+            height: 408px;
+        }
+
+        .image img {
+            opacity: 1;
+        }
+    }
+}
+

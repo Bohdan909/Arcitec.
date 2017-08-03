@@ -14,7 +14,7 @@ h5 { font-size: 13px; line-height: 16px; }
 
 .title {
     font-size: 70px;
-    line-height: 95px;
+    line-height: 105px;
     letter-spacing: 12px;
     color: $colDark;
     font-family: $textT;
@@ -27,14 +27,17 @@ h5 { font-size: 13px; line-height: 16px; }
 }
 
 .font-desc {
-    @include color-b(0.5);
-    text-transform: uppercase;
-    font-family: $textMed;
+    @include desc;
 }
 
 .title-s, p {
     @include color-b(0.55);
     font-size: 17px;
+}
+
+hgroup .title-s {
+    padding-left: 5px;
+    line-height: 22px;
 }
 
 a {

@@ -5,6 +5,7 @@ $textMed: "PFDinTextCompPro-Medium";
 $textT: "HelveticaNeueCyr-Thin";
 
 $colDark: #10141e;
+$colBor: #ebebeb;
 
 // Media Query
 $mobile-width : 1023px;
@@ -202,7 +203,6 @@ $menuBtmPad: 75px;
     -ms-transition: all 0.5s ease-out;
 }   
 
-
 // Delay
 @mixin delay($time) {
     -webkit-transition-delay:$time;
@@ -339,4 +339,10 @@ $menuBtmPad: 75px;
 
 @mixin color-b($opacity){
     color: rgba(0,0,0, $opacity);
+}
+
+@mixin desc {
+    @include color-b(0.5);
+    text-transform: uppercase;
+    font-family: $textMed;
 }

@@ -10,8 +10,9 @@ html { @include border-box; }
 
 html, body {
     min-width: 375px;
+    min-width: 1366px;
     width: 100%;
-    height: 100%;
+    //height: 100%;
     text-align: center;
 }
 
@@ -50,22 +51,20 @@ body.home-page {
 }
 
 #main {
-    margin: 0 auto -100px;
+    margin: 0 auto;
     // height: 100%;
     // height: auto !important;
     min-height: 100%;
     text-align: left;
     overflow: hidden;
 
-    &:after {
-        content: "";
-        display: block;
-        position: static;
-        height: 100px;
-    }
+    // &:after {
+    //     content: "";
+    //     display: block;
+    //     position: static;
+    //     height: 100px;
+    // }
 }
-
-
 
 .socket {
     @include socket;
@@ -77,6 +76,11 @@ body.home-page {
 
 .tbl {
     @include tbl;
+}
+
+.content {
+    background-color: #fff;
+    z-index: 100;
 }
 
 
@@ -544,7 +548,7 @@ $colWidth_2_: calc(100% - #{$colWidth_1_} - 330px);
     z-index: 1000;
     top: 0;
     right: 0;
-    height: 100%;
+    height: 100vh;
     background-color: $colDark;
     text-align: center;
     
@@ -658,24 +662,96 @@ $colWidth_2_: calc(100% - #{$colWidth_1_} - 330px);
    ========================= */   
 
 #footer {
+    background: #fff;
+    text-align: left;
 
-}
-
-.copyright {
-    span {
-        display: block;
-        margin-bottom: 3px;
+    .socket {
+        width: 1240px;
     }
 
-    a {
-        text-decoration: none;
-        color: #000;
-        font-size: 13px;
+    .footer-main {
+        height: 130px;
+        padding-top: 45px;
+        padding-left: 325px;
 
-        em {
+        .btn {
+            float: left;
+        }
+
+        .social {
             position: relative;
-            top: 3px;
-            display: inline-block;
+            right: -17px;
+            float: right;
+        }
+    }
+
+    .footer-logos {
+        position: absolute;
+        top: 43px;
+        left: 0;
+
+        img {
+            margin-right: 45px;
+        }
+    }
+
+    address {
+        @include flex(space-between);
+        float: left;
+        width: 390px;
+        padding-top: 6px;
+        flex-wrap: wrap;
+
+        a {
+            @include desc;
+            display: block;
+            width: 50%;
+            position: relative;
+            padding-left: 21px;
+            margin-bottom: 25px;
+            text-decoration: none;
+            color: $colDark;
+            font-style: normal;
+
+            &:before {
+                @extend .ps;
+                @extend .circ;
+                width: 5px;
+                height: 5px;
+                left: 0;
+                top: 3px;
+                background-color: $colDark;
+            }
+        }
+    }
+
+    .footer-bottom {
+        padding-top: 20px;
+        height: 55px;
+        border-top: 1px solid $colBor;
+        
+        .copyright, .dev span {
+            @include desc;
+            font-size: 13px;
+            padding-left: 15px;
+            color: $colDark;
+            letter-spacing: 1px;
+        }
+
+        .copyright {
+            float: left;
+        }
+
+        .dev {
+            float: right;
+
+            span {
+                display: inline-block;
+                padding: 3px 10px 0 0;
+                vertical-align: top;
+            }
         }
     }
 }
+
+
