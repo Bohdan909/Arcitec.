@@ -10,14 +10,6 @@
 
 @import "form";
 
-.intro {
-    display: none;
-}
-
-.header-mask .mask {
-    clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
-    -webkit-clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
-}
 
 
 
@@ -28,6 +20,7 @@
 
 .section {
     position: relative;
+    z-index: 1;
 }
 
 .figure {
@@ -42,7 +35,7 @@
     padding: 140px 0 0;
 
     hgroup {
-        padding-left: 370px;
+        padding-left: 333px;
         margin-bottom: 85px;
     }
     
@@ -56,7 +49,7 @@
         .text-block {
             position: absolute;
             top: 120px;
-            left: 605px;
+            left: 595px;
         }
 
         .image {
@@ -69,7 +62,7 @@
             position: absolute;
             width: 415px;
             top: 590px;
-            left: 420px;
+            left: 395px;
 
             .panel-item {
                 position: static;
@@ -90,7 +83,7 @@
     .block:nth-child(2) {
         float: left;
         width: 450px;
-        margin-left: 365px;
+        margin-left: 337px;
         padding-right: 159px;
     }
 
@@ -112,11 +105,30 @@
         }
     }
 
+    .block-top {
+        margin-bottom: 30px;
+    }
+
     // Bottom Block
     .block-bottom {
         position: relative;
-        padding-left: 360px;
+        padding-left: 337px;
         height: 880px;
+        
+        .team-items {
+            position: absolute;
+            top: 250px;
+            left: 119px;
+            width: 135px;
+            padding-left: 30px;
+
+            .font-bold {
+                position: absolute;
+                left: 0;
+                top: 0;
+                padding-top: 5px;
+            }
+        }
 
         .image {
             width: 737px;
@@ -126,12 +138,12 @@
         .panel-wrap:nth-child(1) {
             top: 560px;
             left: 120px;
-            width: 38%;
+            width: 34%;
         }
 
         .panel-wrap:nth-child(2) {
             top: 430px;
-            right: 30px;
+            right: 86px;
             width: 36%;
 
             .panel-item {
@@ -169,7 +181,7 @@
     ------------------- */  
 
 .section.clients {
-    padding-left: 120px;
+    padding-left: 117px;
     margin-bottom: 265px;
 
     .figure {
@@ -183,6 +195,7 @@
 
     .quote {
         width: 425px;
+        padding-left: 4px;
 
         p {
             margin-bottom: 23px;
@@ -198,7 +211,7 @@
         width: 930px;
         height: 504px;
         top: 130px;
-        left: 638px;
+        left: 622px;
 
         img {
             position: relative;
@@ -231,7 +244,8 @@
     padding-bottom: 175px;
 
     hgroup {
-        margin: 0 0 250px 275px;
+        margin: 0 473px 250px 0;
+        text-align: right;
     }
 
     .figure {
@@ -381,12 +395,14 @@
 
     hgroup {
         margin-bottom: 40px;
+        margin-left: -3px;
     }
 }
 
 .princ-slider-wrap {
     margin-bottom: 110px;
 }
+
 
 .princ-slider-buttons {
     @include flex(space-between);
@@ -396,9 +412,17 @@
     border-bottom: none;
 
     li {
-        width: 25%;
+        width: 22%;
         border-right: 1px solid $colBor;
         border-bottom: 1px solid $colBor;
+
+        &:nth-child(2), &:nth-child(6) {
+            width: 29%;
+        }
+
+        &:nth-child(4), &:nth-child(8) {
+            width: 27%;
+        }
         
         span {
             @include transition(all, 0.6s, ease);
@@ -480,17 +504,20 @@
     }            
 }
 
-$navWidth: 246px;
+$navWidth: 243px;
 
 .princ-slider {
+    width: 984px;
+    height: 290px;
     position: relative;
     margin-top: -1px;
-    margin-left: -318px;
-    padding-right: $navWidth * 2;
+    //margin-left: -318px;
+    //padding-right: $navWidth * 2;
+
 
     .princ-slider-nav, .princ-slider-desc {
         position: absolute;
-        width: $navWidth;
+        //width: $navWidth;
         height: 100%;
         top: 0;
         border-right: 1px solid $colBor;
@@ -499,10 +526,14 @@ $navWidth: 246px;
 
     .princ-slider-nav {
         right: $navWidth;
+        
+        width: 22%;    
+        right: 27%;
     }
 
     .princ-slider-desc {
         @include mdl;
+        width: 27%;
         right: 0px;
         padding: 0 28px 0 40px;
         border-top: 1px solid $colBor;
@@ -527,9 +558,17 @@ $navWidth: 246px;
             background-color: #e0e1e2;
         }
     }
+
+    .princ-slider-item {
+        position: absolute;
+        left: -308px;
+        width: 810px;
+        height: 290px;
+    }
         
     #slider {
         @extend .trans-slider-mask;
+        position: absolute;
         overflow-y: hidden;
 
         li {
@@ -561,7 +600,7 @@ $navWidth: 246px;
     }
 
     div.anythingSlider { 
-        width: 810px !important;
+
         
         .arrow  {
             cursor: pointer; 
@@ -594,7 +633,7 @@ $navWidth: 246px;
             }
 
             &.forward { 
-                right: - $navWidth + 30px; 
+                right: -183px; 
                 bottom: 25px;
 
                 &:after {
@@ -604,6 +643,7 @@ $navWidth: 246px;
 
                 &:before {
                     @include st(7px, $colDark, 45deg);
+                    top: 2px;
                     right: 0;
                 }
             }
@@ -611,7 +651,7 @@ $navWidth: 246px;
             &.back { 
                 top: 25px;
                 left: auto;
-                right: - $navWidth + ($navWidth - 60px); 
+                right: -58px; 
 
                 &:after {
                     left: 8px;
@@ -626,7 +666,7 @@ $navWidth: 246px;
         }
 
         .thumbNav { 
-            width: $navWidth; top: 72px; right: -$navWidth; left: auto; bottom: auto; position: absolute; z-index: 2; text-align: center; font-size: 0; 
+            width: 215px; right: -215px; height: 290px; top: 72px; left: auto; bottom: auto; position: absolute; z-index: 2; text-align: center; font-size: 0; 
 
             li {
                 position: absolute; margin: 0; left: 0; right: 0;

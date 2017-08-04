@@ -2,8 +2,9 @@ document.documentElement.className = document.documentElement.className.replace(
 
 (function($){
 
-    $(function(){
+    $(document).ready(function(){
 
+        $("html,body").animate({scrollTop: 0}, 50);    
 
         var $btnMenu  = document.querySelector(".btn-menu");
         var $menu     = document.querySelector(".menu");
@@ -22,7 +23,10 @@ document.documentElement.className = document.documentElement.className.replace(
 
                 document.querySelector(".header-mask").classList.add("return"); 
 
-                setTimeout( () => { menu.addScroll() }, 2000);
+                setTimeout( () => { 
+                    menu.addScroll();
+                    //startMomentumScroll(); 
+                }, 2000);
 
                 menu.close();
             });
@@ -35,6 +39,7 @@ document.documentElement.className = document.documentElement.className.replace(
 
                     if ($body.className.match(/\bscroll\b/)) this.scroll = true;
 
+                    $("html, body").animate({scrollTop: 0}, 100);
                     $html.classList.add("menu-open");
                     this.remScroll()
                 },
@@ -180,5 +185,81 @@ document.documentElement.className = document.documentElement.className.replace(
         if ( typeof NodeList.prototype.forEach === "function" ) return false;
         NodeList.prototype.forEach = Array.prototype.forEach;
     }());
+
+    // Scroll
+    var win = $(window)
+            , target = $('body')
+            , wrapper = target.find('> div')
+            , easing = "ease-out" //css easing
+            , duration = "0.8s" //duration ms(millisecond) or s(second)
+            , top = 0
+            , resizeTimeout
+            , jmScroll = {
+                _init: function() {
+                    if( wrapper.length == 1 ) {
+                        target.css({
+                            margin: '0',
+                            padding: '0',
+                            width: '100%',
+                            height: wrapper.height() + 'px'
+                        });
+                        
+                        wrapper.css({
+                            transition: 'transform ' + duration + ' ' + easing,
+                            position: 'fixed',
+                            top: '0',
+                            left: '0',
+                            width: '100%',
+                            padding: '0',
+                            zIndex: '2',
+                            display: 'block',
+                            backfaceVisibility: 'hidden'
+                        });
+
+                        jmScroll._reFlow(function() {
+                            jmScroll._scroll();
+                        });
+                    }
+                },
+
+                _scroll: function() {
+                    top = win.scrollTop();
+                    wrapper.css('transform', 'translateY(-' + top + 'px)');
+                },
+
+                _reFlow: function(callback) {
+                    clearTimeout(resizeTimeout);
+                    resizeTimeout = setTimeout(function() {
+                        target.height(wrapper.height());
+
+                        var getType = {};
+                        var isCallback = callback && getType.toString.call(callback) === '[object Function]';
+
+                        if(isCallback) {
+                            callback();
+                        }
+                    }, 200);
+                }
+            };
+
+    //startMomentumScroll();
+
+    function startMomentumScroll(){
+        if (typeof window.ontouchstart == 'undefined') {
+            win.on({
+                scroll: function () {
+                    jmScroll._scroll();
+                }
+                , resize: function() {
+                    jmScroll._reFlow();
+                }
+                , load: function() {
+                    jmScroll._init();
+                }
+            });
+        }
+    }        
+            
+    
     
 }(jQuery))

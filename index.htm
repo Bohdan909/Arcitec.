@@ -7,7 +7,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" /> 
 		<meta name="format-detection" content="telephone=no">
 		<meta name="format-detection" content="address=no">
-		
+
 		<!-- <link rel="icon" type="image/vnd.microsoft.icon" href="favicon.ico" />
 		<link rel="shortcut icon" type="image/x-icon" href="favicon.ico"  /> -->
 		
@@ -18,9 +18,11 @@
 				
 	</head>
 	
-	<body class="home-page scroll">
+	<body class="home-page">
+		<div>
 		<div id="page-wrap">
 			<div id="main">
+
 				<!-- MENU -->
 				<div class="menu-wrap">
 
@@ -208,12 +210,27 @@
 				</header><!-- / HEADER -->
 				
 				<!-- CONTENT -->
-				<div class="content parallax" data-speed="3">
+				<div class="content parallax">
 					<div class="socket">
+
+						<ul class="lines">
+							<li></li>
+							<li></li>
+							<li></li>
+						</ul>
+
+						<ul class="balls">
+							<li class="line-1 parallax" data-speed="-2.6"></li>
+							<li class="line-3 parallax" data-speed="-2"></li>
+							<li class="line-1 parallax" data-speed="-3.3"></li>
+							<li class="line-2 parallax" data-speed="1.5"></li>
+							<li class="line-1 parallax" data-speed="-1.0"></li>
+							<li class="line-3 parallax" data-speed="-2"></li>
+						</ul>
 					
 						<!-- About -->
-						<div class="section about">
-							<hgroup class="animate-item">
+						<div class="section about animate-item" data-screen="0.1">
+							<hgroup>
 								<div class="title">
 									Про студию
 								</div>
@@ -223,7 +240,7 @@
 								</div>
 							</hgroup>
 
-							<div class="animate-item clearfix" data-screen="0.1">
+							<div class="block-top clearfix">
 
 								<div class="block">
 									<div class="image parallax" data-speed="4.5">
@@ -297,6 +314,13 @@
 								<div class="image parallax" data-speed="5.5">
 									<img class="parallax" data-speed="-5.5" src="images/image-2.png" alt="">
 								</div>
+
+								<div class="team-items">
+									<div class="font-bold">3</div>
+									<p>
+										строительные команды
+									</p>
+								</div>
 								
 								<section>
 									<div class="panel-wrap slide-up">
@@ -328,7 +352,7 @@
 						</div>
 						
 						<!-- Clients -->
-						<div class="section clients animate-item" data-screen="0.1">
+						<div class="section clients animate-item" data-screen="0.05">
 
 							<div class="figure parallax slide-up" data-speed="7">
 								<img src="images/figure-1.png" alt="">
@@ -501,7 +525,7 @@
 						</div>
 
 						<!-- Principles -->
-						<div class="section principles animate-item" data-screen="0.5">
+						<div class="section principles animate-item" data-screen="0.2">
 							<hgroup>
 								<div class="title-s">
 									Practice safe design: Use a concept.
@@ -538,32 +562,34 @@
 										</p>
 									</div>
 									
-									<ul id="slider">
-										<li style="background-image:url(images/slide-1.jpg)">
-											
-										</li>
-										<li style="background-image:url(images/slide-2.jpg)">
-											
-										</li>
-										<li style="background-image:url(images/slide-1.jpg)">
-											
-										</li>
-										<li style="background-image:url(images/slide-2.jpg)">
-											
-										</li>
-										<li style="background-image:url(images/slide-1.jpg)">
-											
-										</li>
-										<li style="background-image:url(images/slide-2.jpg)">
-											
-										</li>
-										<li style="background-image:url(images/slide-1.jpg)">
-											
-										</li>
-										<li style="background-image:url(images/slide-2.jpg)">
-											
-										</li>
-									</ul>
+									<div class="princ-slider-item">
+										<ul id="slider">
+											<li style="background-image:url(images/slide-1.jpg)">
+												
+											</li>
+											<li style="background-image:url(images/slide-2.jpg)">
+												
+											</li>
+											<li style="background-image:url(images/slide-1.jpg)">
+												
+											</li>
+											<li style="background-image:url(images/slide-2.jpg)">
+												
+											</li>
+											<li style="background-image:url(images/slide-1.jpg)">
+												
+											</li>
+											<li style="background-image:url(images/slide-2.jpg)">
+												
+											</li>
+											<li style="background-image:url(images/slide-1.jpg)">
+												
+											</li>
+											<li style="background-image:url(images/slide-2.jpg)">
+												
+											</li>
+										</ul>
+									</div>
 								</div>
 							</div>
 						</div>
@@ -597,7 +623,7 @@
 			</div><!-- / MAIN -->
 
 			<!-- FOOTER -->
-			<footer id="footer" class="parallax" data-speed="3">	
+			<footer id="footer">	
 				<div class="footer-main socket clearfix">
 					<div class="footer-logos">
 						<img src="images/f-logo-1.png" alt="">
@@ -647,12 +673,13 @@
 				</div>
 			</footer><!-- / FOOTER -->
 		</div>
+		</div>
 
 		<script src="http://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
      
 		<!-- Scripts -->
 		<script src="./js/modernizr.js"></script> 
-		<script src="./js/jQuery-Momentum-Scroll.js"></script> 
+		<!-- <script src="./js/jQuery-Momentum-Scroll.js"></script>  -->
 		<script src="./js/anime.min.js"></script> 
 		<script src="./js/lines.js"></script> 
 		<script src="./js/parallax.js"></script> 
@@ -663,6 +690,7 @@
 			$(function(){
 				$(".princ-slider #slider").anythingSlider({  
 	                autoPlay            : false,
+	                startPanel          : 5,
 
 	                animationTime       : 500,
 	                toggleArrows        : false,
@@ -679,10 +707,18 @@
 
 	                onSlideBegin: function(){
 	                    $(".activePage").addClass("slideUp");
+
+	                    var activeIndex = $(".activePage").index();
+
+	                    console.log(activeIndex);
 	                },
 
 	                onSlideComplete: function(slider){
-	                    $(".slideUp").removeClass("slideUp");
+	                	var activeIndex = $(".activePage").index();
+
+	                	$(".panel").removeClass("slideUp");	
+	                	$button.removeClass("is-clicked is-active");
+	                    $button.eq(activeIndex).addClass("is-clicked");
 	                }         
 	            });
 
