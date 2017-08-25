@@ -3,46 +3,86 @@ $bold: "HelveticaNeueCyr-Bold";
 $textReg: "PFDinTextCompPro-Regular";
 $textMed: "PFDinTextCompPro-Medium";
 $textT: "HelveticaNeueCyr-Thin";
+$textI:  "PFDinTextCondPro-Italic";
 
 $colDark: #10141e;
 $colBor: #ebebeb;
 
 // Media Query
-$mobile-width : 1023px;
-$mid-width    : 1280px;
-$full-width   : 1920px;
+$mobile-width : 767px;
+$tablet-width : 1024px;
+$middle-width : 1200px;
+
 
 // Menu
 $menuWidth: 330px;
 $menuTopPad: 125px;
+$menuTopPadMid: 87px;
 $menuBtmPad: 75px;
 
- 
+// Service Slider
+$buttonWidth: 27%;
+$buttonWidth_m: 21%;
+$buttonHeight: 19vh;
+$buttonHeight_m: 12vh;
+$buttonWidth_mob: 36%;
+$buttonHeight_mob: 15vh;
+
 
 // Mixins
-@mixin mobile {
-	@media (max-width: #{$mobile-width}) {
-   		@content;
-  	}
-}
-
 @mixin mid {
-	@media (min-width: #{$mid-width}) and (max-width: #{$full-width - 1px}) {
+    @media (max-width: #{$middle-width}) {
+        @content;
+    }
+}
+
+@mixin tablet {
+	@media (max-width: #{$tablet-width}) {
    		@content;
   	}
 }
 
-@mixin full {
-	@media (min-width: #{$full-width}) {
-   		@content;
-  	}
+@mixin mobile {
+    @media (max-width: #{$mobile-width}) {
+        @content;
+    }
 }
+
+@mixin height-lt {
+    @media (min-width: 1024px) and (max-height: 700px) {
+        @content;
+    }
+}
+
+
+
 
 // Socket
 @mixin socket {
     position: relative;
     width: 1105px;
     margin: auto;
+
+    @include mid {
+        width: 1000px;
+    }
+
+    @include tablet {
+        width: auto;
+
+        &.socket-f {
+            margin: 0 30px;
+        }
+    }
+
+    @include mobile {
+        width: 375px;
+
+        &.socket-f {
+            width: auto;
+            margin: 0 20px;
+        }
+    }
 }
 
 // Web Kit Hack
@@ -333,6 +373,10 @@ $menuBtmPad: 75px;
     @include border-rad(50%);
 }
 
+.scroll-hidden-y {
+    overflow-y: hidden;
+}
+
 @mixin color-w($opacity){
     color: rgba(255,255,255, $opacity);
 }
@@ -345,4 +389,72 @@ $menuBtmPad: 75px;
     @include color-b(0.5);
     text-transform: uppercase;
     font-family: $textMed;
+}
+
+@mixin mainText {
+    text-transform: uppercase;
+    font-family: $textMed;
+}
+
+@mixin vertCenter {
+    @include transform(translateY(-50%));
+    position: relative;
+    top: 50%;
+}
+
+.arrow-st {
+    position: absolute;
+    cursor: pointer; 
+    width: 28px;
+    height: 10px;
+
+    &:before {
+        content: "";
+        display: block;
+        top: 1px;
+    }
+
+    &:after {
+        @include transition(all, 0.4s, ease-out);
+        @extend .ps;
+        width: 20px;
+        height: 2px;
+        top: 4px;
+        background-color: $colDark;
+    }
+}
+
+.arrow-st-prev {
+
+    &:after {
+        left: 7px;
+    }
+    
+    &:before {
+        @include st(7px, $colDark, -135deg);
+        left: 0;
+    }
+}
+
+.arrow-st-next {
+
+    &:after {
+        right: 7px;
+    }
+
+    &:before {
+        @include st(7px, $colDark, 45deg);
+        top: 2px;
+        right: 0;
+    }
+}
+
+.no-touchevents {
+
+    .arrow-st:hover {
+
+        &:after {
+            width: 27px;
+        }
+    }
 }

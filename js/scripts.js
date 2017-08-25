@@ -2,9 +2,17 @@ document.documentElement.className = document.documentElement.className.replace(
 
 (function($){
 
+    window.onload = function(){
+        var $sectionAnimate = document.querySelector(".section-animate");
+
+        if (document.body.contains($sectionAnimate)){
+             $sectionAnimate.classList.add("animate");
+        }
+    }
+
     $(document).ready(function(){
 
-        $("html,body").animate({scrollTop: 0}, 50);    
+        $("html, body").animate({scrollTop: 0}, 50);    
 
         var $btnMenu  = document.querySelector(".btn-menu");
         var $menu     = document.querySelector(".menu");
@@ -19,18 +27,17 @@ document.documentElement.className = document.documentElement.className.replace(
             // Skip Video    
             var $skip = document.querySelector(".skip");
 
-            $skip.addEventListener("click", () => {
+            if (document.body.contains($skip)){
+                $skip.addEventListener("click", () => {
 
-                document.querySelector(".header-mask").classList.add("return"); 
+                    document.querySelector(".header-mask").classList.add("return"); 
 
-                setTimeout( () => { 
-                    menu.addScroll();
-                    //startMomentumScroll(); 
-                }, 2000);
+                    setTimeout( () => { menu.addScroll() }, 2000);
 
-                menu.close();
-            });
-
+                    menu.close();
+                });
+            };    
+            
             // Menu    
             var menu = {
                 scroll: false,
@@ -39,7 +46,6 @@ document.documentElement.className = document.documentElement.className.replace(
 
                     if ($body.className.match(/\bscroll\b/)) this.scroll = true;
 
-                    $("html, body").animate({scrollTop: 0}, 100);
                     $html.classList.add("menu-open");
                     this.remScroll()
                 },
@@ -95,11 +101,18 @@ document.documentElement.className = document.documentElement.className.replace(
                 },
 
                 remScroll: function(){
-                    $body.classList.remove("scroll");
+                    //$body.classList.remove("scroll");
+
+                    $("body").on("scroll mousewheel touchmove", function(e) {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        return false;
+                    });
                 },
 
                 addScroll: function(){
                     $body.classList.add("scroll");
+                    $("body").off("scroll mousewheel touchmove");
                 }
             }
 
@@ -126,7 +139,7 @@ document.documentElement.className = document.documentElement.className.replace(
 
                 textBtnCont.innerHTML = textClose;
                 textBtnCont.setAttribute("data-close-text", textBtn);
-            }
+            };
 
             // Lines
             var lineCol = 'rgba(255,255,255,0.2)';
@@ -140,9 +153,12 @@ document.documentElement.className = document.documentElement.className.replace(
                     {left: 0, width: '100%', height: 1, color: lineCol, hidden: true, animation: { duration: 700, easing: 'easeInOutExpo', delay: 500, direction: 'LeftRight' }}
                 ]
             });
- 
         }());
 
+        // Full Page
+        $("#one-scroll-page").length && $("#one-scroll-page").singlefull({
+            scrollingSpeed: 1500
+        });
 
         // Placeholder Hide
         $("input, textarea").focus(function(){
@@ -152,6 +168,27 @@ document.documentElement.className = document.documentElement.className.replace(
         });
 
         
+
+        // var swiper = new Swiper('.service-slider', {
+        //     pagination: '.swiper-pagination',
+        //     paginationClickable: true,
+        //     speed: 100,
+        //     parallax: true,
+        //     longSwipesRatio: 0.2,
+        //     loop: false,
+        //     slidesPerView: 1,
+        //     paginationClickable: true,
+        //     mousewheelControl: true,
+        //     effect: "fade",
+
+        //     paginationBulletRender: function (swiper, index, className) {
+        //         return '<span class="' + className + '">' + (index + 1) + '</span>';
+        //     },
+
+        //     fade: {
+        //         crossFade: false
+        //     }
+        // });
 
 
         windowSize();   
@@ -189,7 +226,7 @@ document.documentElement.className = document.documentElement.className.replace(
     // Scroll
     var win = $(window)
             , target = $('body')
-            , wrapper = target.find('> div')
+            , wrapper = target.find('.scroll-wrap')
             , easing = "ease-out" //css easing
             , duration = "0.8s" //duration ms(millisecond) or s(second)
             , top = 0
@@ -242,7 +279,7 @@ document.documentElement.className = document.documentElement.className.replace(
                 }
             };
 
-    //startMomentumScroll();
+    startMomentumScroll();
 
     function startMomentumScroll(){
         if (typeof window.ontouchstart == 'undefined') {

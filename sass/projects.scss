@@ -1,0 +1,854 @@
+
+/* --------------------
+    Projects
+    ------------------- */  
+
+#one-scroll-page {
+    position: relative;
+}
+
+/* Section Top */
+.section-top {
+    z-index: 103;
+    
+    .figure {
+        right: -120px;
+        bottom: -170px;
+    }
+
+    @include mobile {
+
+        .socket {
+            width: auto;
+        }
+    }
+}    
+
+.fly-item {
+    animation: fly 20s ease-in-out infinite;
+    -webkit-animation: fly 20s ease-in-out infinite;
+}
+
+.section {
+
+    .socket {
+        height: 100%;
+    }
+}
+
+.scroll-text {
+    @include transition(letter-spacing, 0.5s, ease-out);
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 60px;
+    letter-spacing: 1px;
+    text-align: center;
+
+    .animate & {
+        letter-spacing: 15px;
+    }
+
+    @include mobile {
+        bottom: 30px;
+
+        .animate & {
+            letter-spacing: 5px;
+        }
+    }
+}
+
+.page-figure {
+    position: absolute;
+    top: 8vh;
+    left: 160px;
+
+    i {
+        display: block;
+        font-style: normal;
+        text-transform: uppercase;
+        font-size: 25px;
+        line-height: 20px;
+        font-family: $bold;
+    }
+
+    div {
+        position: absolute;
+        left: 30px;
+        top: 21px;
+        width: 24px;
+        height: 2px;
+        background-color: $colDark;
+    }
+
+    span {
+        position: absolute;
+        display: block;
+        top: 32px;
+        left: 74px;
+        width: 20px;
+        height: 20px;
+        border: 2px solid $colDark;
+
+        &:after {
+            @extend .ps;
+            @extend .circ;
+            left: 50%;
+            top: 50%;
+            width: 4px;
+            height: 4px;
+            margin: -2px 0 0 -2px;
+            background-color: $colDark;
+        }
+    }
+
+    @include mobile {
+        left: 30px;
+        top: 30px;
+
+        i {
+            font-size: 18px;
+        }
+    }
+}
+
+.page-title-wrap {
+    @include transform(translateY(-50%));
+    position: relative;
+    padding-left: 55px;
+    top: 50%;
+    text-align: left;
+
+    .title-top {
+        padding-left: 5px;
+        margin-bottom: 25px;
+    }
+
+    @include mid {
+        padding-left: 0;
+    }
+
+    @include tablet {
+        padding-left: 30px;
+
+        .title-top {
+            margin-bottom: 5px;
+            font-size: 11px;
+        }
+    }
+}
+
+.quote-block {
+    position: relative;
+    margin-bottom: 65px;
+
+    @media (max-height: 600px) {
+        margin-bottom: 25px;
+    }
+
+    .author {
+        @include mainText;
+        position: absolute;
+        left: -175px;
+        top: 37px;
+        width: 150px;
+        white-space: nowrap;
+        text-align: right;
+    }
+
+    @include mobile {
+        margin-bottom: 25px;
+
+        .author {
+            width: auto;
+            position: static;
+            padding-top: 7px;
+            padding-right: 30px;
+            font-size: 11px;
+        }
+    }
+}
+
+.quote {
+    @include color-b(0.6);
+    width: 385px;
+    position: relative;
+    font-size: 17px;
+    padding-left: 65px;
+    line-height: 27px;
+    text-align: left;
+    font-family: $textI;
+
+    &:before {
+        @include sp(0px, 0px);
+        content: "";
+        position: absolute;
+        display: block;
+        width: 22px;
+        height: 19px;
+        top: 15px;
+        left: 0;
+        font-size: 100px;
+    }
+
+    @include mid {
+        padding-left: 45px;
+        font-size: 14px;
+        line-height: 23px;
+
+        &:before {
+            top: 11px;
+        }
+    }
+
+    @include mobile {
+        width: 315px;
+        font-size: 12px;
+    }
+}
+
+
+/* Section Projects */
+.section-projects {
+    border-top: 1px solid $colBor;
+    overflow: visible !important;
+
+    .lines {
+        position: static;
+
+        li {
+            top: -100vh;
+            z-index: 102;
+        }
+    }
+}
+
+
+div[data-target] {
+
+    .projects-images {
+        position: absolute;
+        right: 0;
+        top: 0;
+        width: 53%;
+        height: 100%;   
+        z-index: 100;
+
+        > div {
+            position: absolute;
+            right: 0;
+            width: 100%;
+        }
+
+        .top {
+            top: 0;
+            height: 63.5%;
+        }
+
+        .btm {
+            bottom: 0;
+            width: 50%;
+            height: 37%;
+
+            &.left {
+                left: 0;
+
+                .projects-img.slide-down {
+                    @include delay(0.1s);
+                }
+            }
+
+            &.right {
+                right: 0;
+
+                .projects-img.slide-down {
+                    @include delay(0.2s);
+                }
+            }
+        }
+
+        .projects-img {
+            @include transition(all, 0.01s, linear);
+            @include delay(0.8s);
+            position: absolute;
+            display: block;
+            width: 100%;
+            height: 100%;
+            right: 0;
+            background-size: cover !important;
+            overflow: hidden;
+
+            -webkit-clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+            clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+
+            &.slide-down {
+                @include transition(all, 0.6s, ease-in-out);
+                z-index: 1;
+
+                -webkit-clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+                clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+            }
+        }
+    }
+    
+    @include mid {
+
+        .projects-images {
+            width: 49%;
+        }
+    }
+
+    @include tablet {
+
+        .projects-images {
+            width: auto;
+            height: auto;
+            left: 65px;
+            right: 0;
+            bottom: 65px;
+
+            &:after {
+                @include full;
+                @include transition(opacity, 0.3s, linear);
+                @include delay(0.4s);
+                content:"";
+                display: block;
+                background-color: #000;
+                opacity: 0;
+                z-index: 1;
+            }
+        }
+    }
+
+    @include mobile {
+
+        .projects-images {
+            left: 0;
+
+            .projects-img {
+                background-position: 50% 0 !important;
+            }
+        }
+    }
+}
+
+.animate .projects-images:after {
+    opacity: 0.5 !important;
+}
+
+.projects-slider {
+    position: relative;
+    z-index: 101;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+
+    &:before {
+        @extend .ps;
+        width: 1px;
+        top: 0;
+        left: 5%;
+        height: 100%;
+        z-index: 107;
+        background-color: $colBor;
+    }
+
+    &:after {
+        @extend .ps;
+        left: 5%;
+        width: 35%;
+        bottom: 0;
+        top: auto;
+        height: 7vh;
+        z-index: 1;
+        background-color: #fff;
+        border-top: 1px solid $colBor;
+    }
+
+    @include mid {
+
+        &:after {
+            width: 46%;
+        }
+    }
+
+    @include tablet {
+
+        &:before {
+            left: 65px;
+        }
+
+        &:after {
+            width: auto;
+            right: 0;
+            left: 65px;
+            height: 65px;
+            z-index: 106;
+        }
+    }
+
+    @include mobile {
+
+        &:before {
+            display: none;
+        }
+    }
+}
+
+.projects-slider .swiper-wrapper {
+
+    @include tablet {
+        position: relative;
+        z-index: 103;
+    }
+}
+
+.swiper-slide {
+    position: relative;
+    
+}
+
+.projects-slider .swiper-slide {
+    padding-right: 53%;
+
+    text-align: center;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+    
+
+    @include mid {
+        padding-right: 49%;
+    }
+
+    @include tablet {
+        padding-right: 0;
+    }
+}
+
+.projects-slider .swiper-pagination {
+    @include flex-vert(space-between);
+    position: absolute;
+    width: 5%;
+    top: 5%;
+    left: 0;
+    bottom: 5%;
+    z-index: 107;
+
+    &:after {
+        @extend .ps;
+        width: 1px;
+        top: 0;
+        bottom: 0;
+        left: 50%;
+        margin-left: -1px;
+        background-color: $colBor;
+    }
+
+    .swiper-pagination-bullet {
+        @extend .circ;
+        @extend .trans;
+        position: relative;
+        display: block;
+        margin: 0 auto;
+        width: 23px;
+        height: 23px;
+        border: 1px solid $colBor;
+        background-color: #fff;
+        z-index: 1;
+        cursor: pointer;
+
+        &:after {
+            @extend .ps;
+            @extend .circ;
+            //@include trans(0.2s);
+            @include transform(translate(-50%,-50%));
+            width: 5px;
+            height: 5px;
+            top: 50%;
+            left: 50%;
+            background: $colDark;
+        }
+
+        &.swiper-pagination-bullet-active {
+            @include transform(scale(1.2));
+
+            &:after {
+                // @include transform(translate(-50%,-50%) scale(1.25));
+                background: -moz-linear-gradient( 0deg, rgb(193,230,247) 0%, rgb(4,134,193) 100%);
+                background: -webkit-linear-gradient( 0deg, rgb(193,230,247) 0%, rgb(4,134,193) 100%);
+                background: -ms-linear-gradient( 0deg, rgb(193,230,247) 0%, rgb(4,134,193) 100%);
+            }
+        }
+    }
+
+    @include mobile {
+        width: 55px;
+        top: 25px;
+        bottom: 90px;
+
+        &:after {
+            display: none;
+        }
+
+        .swiper-pagination-bullet {
+            width: 15px;
+            height: 15px;
+        }
+    }
+}
+
+@include mid {
+
+    .swiper-pagination {
+        width: 65px;
+    }
+}
+
+.projects-pages {
+    position: absolute;
+    left: 7.5%;
+    bottom: 2.3vh;
+    font-size: 0;
+    z-index: 107;
+    white-space: nowrap;
+
+    li {
+        display: inline-block;
+        margin-right: 2vh;
+
+        a {
+            @extend .trans;
+            @include color-b(0.5);
+            font-size: 17px;
+            font-family: $textMed;
+            letter-spacing: 1px;
+        }
+
+        &.is-active a {
+            color: $colDark;
+        }
+
+        .no-touchevents &:hover a {
+            color: $colDark;
+        }
+    }
+
+    @include tablet {
+        bottom: 21px;
+        left: 90px;
+    }
+
+    @include mobile {
+        left: 25px;
+    }
+}
+
+
+.swiper-button-prev, .swiper-button-next {
+    @extend .arrow-st;
+    bottom: 2.6vh;
+    top: auto;
+    z-index: 107;
+
+    @include tablet {
+        bottom: 24px;
+        left: auto !important;
+    }
+}
+
+.projects-slider .swiper-button-prev {
+    @extend .arrow-st-prev;
+    left: 31%;
+
+    @include mid {
+        left: 43%;
+    }
+
+    @include tablet {
+        right: 65px;
+    }
+}
+
+.projects-slider .swiper-button-next {
+    @extend .arrow-st-next;
+    left: 35%;
+
+    @include mid {
+        left: 47%;
+    }
+
+    @include tablet {
+        right: 20px;
+    }
+}
+
+.slide-socket {
+    position: absolute;
+    width: 40%;
+    top: 0;
+    left: 0;
+    //bottom: 75px;
+    bottom: 7vh;
+
+    .det-circle {
+        bottom: 10%;
+        right: 80px;
+    }
+
+    @include mid {
+        width: 50%;
+    }
+
+    @include tablet {
+        width: auto;
+        bottom: 65px;
+        right: 0;
+        left: 65px;
+        z-index: 105;
+
+        .det-circle {
+            bottom: 50px;
+            right: 55px;
+        }
+    }
+
+    @include mobile {
+        left: 0;
+
+        .det-circle {
+            right: 20px;
+            bottom: 20px;
+        }
+    }
+}
+
+
+.plus-item {
+    @include mainText;
+    position: absolute;
+    padding-left: 20px;
+    top: 8%;
+    right: 5%;
+    font-size: 12px;
+    text-decoration: none;
+    white-space: nowrap;
+
+    &:hover {
+        text-decoration: underline;
+    }
+    
+    &:before, &:after {
+        @extend .ps;
+        background-color: $colDark;
+    }
+
+    &:before {
+        width: 2px;
+        height: 10px;
+        top: 1px;
+        left: 4px;
+    }
+
+    &:after {
+        width: 10px;
+        height: 2px;
+        top: 5px;
+        left: 0;
+    }
+
+    @include tablet {
+        color: #fff;
+        top: 110px;
+
+        &:before, &:after {
+            background-color: #fff;
+        }
+    }
+}
+
+.slide-title-wrap {
+    @include delay(0.0s);
+    @include vertCenter;
+    text-align: right;
+    padding-left: 15%;
+
+    @include tablet {
+        padding-left: 0;
+        text-align: center;
+    }
+}
+
+.title-desc-list {
+    font-size: 0;
+    text-align: right;
+    margin-bottom: 23px;
+
+    li {
+        position: relative;
+        padding-left: 18px;
+        margin-left: 25px;
+        display: inline-block;
+        font-size: 12px;
+        font-family: $textMed;
+        text-transform: uppercase;
+
+        &:before {
+            @extend .ps;
+            top: 5px;
+            left: 0;
+            width: 10px;
+            height: 2px;
+            background-color: $colDark;
+        }
+    }
+
+    @include tablet {
+        text-align: center;
+
+        li {
+            color: #fff;
+            margin: 0 6px;
+
+            &:before {
+                background-color: #fff;
+            }
+        }
+    }
+
+    @include mobile {
+        margin-bottom: 8px;
+
+        li {
+            font-size: 11px;
+
+            &:before {
+                top: 3px;
+            }
+        }
+    }
+}
+
+.slide-title {
+    font-size: 30px;
+    line-height: 37px;
+    font-family: $bold;
+
+    @include tablet {
+        color: #fff;
+    }
+
+    @include mobile {
+        padding: 0 45px;
+        font-size: 18px;
+        line-height: 27px;
+    }
+}
+
+.det-circle {
+    @include transition(background, 0.1s, linear);
+    @include delay(0s);
+    @include transform(scale(0));
+    @extend .circ; 
+    position: absolute;
+    display: block;
+    width: 120px;
+    height: 120px;
+    text-decoration: none;
+    text-align: left;
+    background: $colDark;
+    overflow: hidden;
+
+    .animate & {
+        @extend .trans;
+        @include transform(scale(1));
+    }
+
+    &:before, &:after {
+        @extend .circ; 
+        @extend .ps;
+        width: 5px;
+        height: 5px;
+        right: 17px;
+        top: 50%;
+        margin-top: -2px;
+    }
+
+    &:before {
+        @include transition(all, 0.4s, ease-out);
+        @extend .circ;
+        background-image: -moz-linear-gradient( 0deg, rgb(193,230,247) 0%, rgb(4,134,193) 100%);
+        background-image: -webkit-linear-gradient( 0deg, rgb(193,230,247) 0%, rgb(4,134,193) 100%);
+        background-image: -ms-linear-gradient( 0deg, rgb(193,230,247) 0%, rgb(4,134,193) 100%);
+    }
+    
+    &:after {
+        background-color: #fff;
+    }
+
+    span {
+        @include transition(all, 0.4s, ease-out);
+        @include vertCenter;
+        display: block;
+        padding-left: 22px;
+        color: #fff;
+    }
+
+    &:hover { // HOVER
+        @include delay(0.4s);
+        background: none;   
+
+        &:before {
+            top: -1px;
+            right: 0;
+            width: 122px;
+            height: 124px;
+        }
+        
+        span {
+            letter-spacing: 5px;
+        }
+    }
+
+    @include tablet {
+        background: #fff;
+
+        &:after {
+            background-color: $colDark;
+        }
+
+        span {
+            color: $colDark;
+        }
+    }
+
+    @include mobile {
+        width: 70px;
+        height: 70px;
+
+        span {
+            padding-left: 12px;
+        }
+
+        &:hover {
+
+            &:before {
+                width: 72px;
+                height: 74px;
+            }
+
+            span {
+                letter-spacing: 1px;
+            }
+        }
+    }
+}

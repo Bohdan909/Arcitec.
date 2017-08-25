@@ -1,0 +1,357 @@
+
+/* --------------------
+    Projects Item
+    ------------------- */  
+
+.pan-ico {
+    @include transform(translateY(-50%));
+    opacity: 1;
+    top: 50%;
+    bottom: auto;
+
+    &:after {
+        content:"360";
+        background: none;
+        top: 42px;
+        left: 0;
+        right: 0;
+        width: auto;
+        height: auto;
+        margin: 0;
+        color: #fff;
+        letter-spacing: 1.2px;
+        font-family: $textMed;
+    }
+
+    span {
+        letter-spacing: 1.3px;
+    }
+
+    @include tablet {
+        display: block;
+    }
+}
+
+.project-title-wrap {
+    position: absolute;
+    left: 0;
+    bottom: 33px;
+    text-align: left;
+
+    .project-title {
+        color: #fff;
+        font-size: 45px;
+        line-height: 52px;
+        font-family: $textMed;
+        text-transform: uppercase;
+        margin-bottom: 15px;
+        letter-spacing: 1.7px;
+    }
+
+    .year {
+        color: #fff;
+        font-family: $textMed;
+    }
+
+    @include tablet {
+        
+        .project-title {
+            font-size: 30px;
+            line-height: 37px;
+        }
+    }
+}
+
+.project-item-content {
+    position: relative;
+
+    .figure {
+        top: 500px;
+        right: -170px;
+    }
+
+    @include tablet {
+
+        .figure  {
+            right: -220px;
+
+            img {
+                @include transform(scale(0.7));
+            }
+        }
+    }
+
+    @include mobile {
+
+        .figure {
+            display: none;
+        }
+    }
+}
+
+.quote-proj-block {
+    width: 45%;
+    padding: 110px 0 110px;
+
+    .quote-proj {
+        position: relative;
+        font-size: 35px;
+        line-height: 50px;
+        font-family: $textI;
+        margin-bottom: 16px;
+
+        &:before {
+            content: "''";
+            position: absolute;
+            display: block;
+            top: -42px;
+            left: 0;
+            letter-spacing: 0;
+            font-family: $textReg;
+        }
+    }
+
+    @include mid {
+
+        .quote-proj {
+            font-size: 25px;
+            line-height: 42px;
+        }
+    }
+
+    @include tablet {
+        
+        .quote-proj {
+            font-size: 18px;
+            line-height: 30px;
+        }
+    }
+
+    @include mobile {
+        width: 81%;
+        padding: 80px 0 80px;
+
+        .quote-proj {
+
+            &:before {
+                top: -25px;
+            }
+        }
+    }
+}
+
+.art-item {
+    position: relative;
+    z-index: 3;
+
+    &.last .image-item {
+        margin-bottom: 0;
+    }
+
+    &.to-left {
+        width: 80%;
+
+        @include mobile {
+            width: auto;
+        }
+
+        .image-item:after {
+            left: 28%;
+        }
+
+        .proj-desc {
+            left: 24%;
+
+            @include mobile {
+                left: 1px;
+            }
+        }
+    }
+
+    .quote-proj-block {
+        width: 800px;
+        left: 19%;
+        padding: 40px 0 70px;
+
+        @include mobile {
+            width: 300px;
+        }
+    }
+}
+
+.image-item {
+    position: relative;
+    margin-bottom: 75px;
+
+    &:after {
+        @extend .ps;
+        top: auto;
+        width: 2px;
+        height: 45px;
+        bottom: -30px;
+        left: 80%;
+        background-color: $colDark;
+    }
+
+    img {
+        width: 100%;   
+        display: block;
+    }
+}
+
+.proj-desc-f {
+    position: relative;
+
+    .proj-desc {
+        width: 55%;
+
+        @include mobile {
+            width: 190px;
+        }
+    }
+}
+
+.proj-info {
+    position: absolute;
+    width: 32%;
+    padding-left: 235px;
+    top: 15px;
+    left: 61%;
+
+    &:before {
+        @extend .ps;
+        height: 1px;
+        width: 195px;
+        top: 20px;
+        left: 0;
+        background-color: #66686f;
+    }
+
+    &:after {
+        @extend .ps;
+        left: 203px;
+        top: 16px;
+        width: 6px;
+        height: 10px;
+        background: url(../images/nav-arrow-r.png) no-repeat;
+    }
+
+    div {
+        font-size: 40px;
+        font-family: $textI;
+        margin-bottom: 13px;
+        white-space: nowrap;
+
+        sup {
+            font-size: 25px;
+        }
+    }
+
+    span {
+        @include desc;
+        display: block;
+        white-space: nowrap;
+    }
+
+    @include tablet {
+        padding-left: 95px;
+
+        &:before {
+            width: 60px;
+            top: 17px;
+        }
+
+        &:after {
+            left: 70px;
+            top: 12px;
+        }
+
+        div {
+            font-size: 30px;
+
+            sup {
+                font-size: 17px;
+            }
+        }
+    }
+
+    @include mobile {
+        width: 180px;
+        padding-left: 85px;
+        left: 200px;
+
+        &:before {
+            top: 10px;
+        }
+
+        &:after {
+            top: 5px;
+        }
+
+        div {
+            font-size: 20px;
+
+            sup {
+                font-size: 14px;
+            }
+        }
+
+        span {
+            font-size: 9px;
+        }
+    }
+}
+
+.proj-desc {
+    width: 450px;
+
+    .font-desc {
+        color: $colDark;
+        margin-bottom: 16px;
+    }
+
+    @include tablet {
+        width: 350px;
+
+        p {
+            font-size: 14px;
+        }
+    }
+}
+
+.art-columns {
+
+    .column {
+        float: left;
+
+        .proj-desc {
+            width: 90%;
+        }
+
+        &:first-child {
+            width: 55%;
+        }
+
+        &:last-child {
+            float: right;
+            width: 39%;
+
+            .image-item:after {
+                display: none;
+            }
+        }
+    }
+
+    @include mobile {
+
+        .column {
+            width: auto !important;
+            float: none !important;
+
+            .proj-desc {
+                width: 300px;
+            }
+        }
+    }
+}
+

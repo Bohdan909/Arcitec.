@@ -99,6 +99,12 @@ function animate(){
 
             if ($(this).isOnScreen(0, screen)){
                 $(this).addClass("animate");
+
+                if ($(".section-projects").length){
+                    $(".projects-img:nth-child(1)").each(function(){
+                        $(this).addClass("slide-down");
+                    });
+                } 
             }
 
             // prevAnimate();

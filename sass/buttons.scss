@@ -95,14 +95,14 @@
 		-webkit-clip-path: polygon(0 0, 100% 0%, 90% 100%, 0% 100%);
 		clip-path: polygon(0 0, 100% 0%, 90% 100%, 0% 100%);
 	}
+}
 
-	&:hover {
+.no-touchevents .btn-c-right:hover {
 
-		span {
-			padding-right: 25px;
-			background-color: #1d93c8 !important;		
-			-webkit-clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
-			clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);	
-		}
+	span {
+		padding-right: 25px;
+		background-color: #1d93c8 !important;		
+		-webkit-clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+		clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);	
 	}
 }
