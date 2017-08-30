@@ -84,6 +84,10 @@ $easing: cubic-bezier(0, 0, 0, 1.18);
     @include transform(translateX(57%));
     @include delay(0.2s);
 
+    @include tablet {
+        @include transform(translateX(43%));
+    }
+
     .object img {
         animation: fly 20s ease-in-out infinite;
     }
@@ -328,6 +332,10 @@ $easing: cubic-bezier(0, 0, 0, 1.18);
 
     .menu-ext {
         @include delay(1.5s);
+
+        @include mobile {
+            @include delay(0s);
+        }
     }
 }
 

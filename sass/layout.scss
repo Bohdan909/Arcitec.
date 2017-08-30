@@ -1,5 +1,19 @@
 
 
+.preloader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #fff;
+    z-index: 99999;
+
+    .no-js & {
+        display: none;
+    }
+}
+
 body { 
     background: #fff; 
 }
@@ -13,6 +27,7 @@ html, body {
     width: 100%;
     //height: 100%;
     text-align: center;
+    overflow-x: hidden;
 }
 
 
@@ -37,7 +52,7 @@ body.home-page {
 
 
 .menu-open body {
-    @extend .scroll-hidden-y;
+    //@extend .scroll-hidden-y;
     
     // .page-wrap {
     //     height: 100vh;
@@ -211,11 +226,11 @@ body.home-page {
     z-index: 1;
 
     li:nth-child(1) {
-        left: 40%;
+        left: 33%;
     }
 
     li:nth-child(2) {
-        left: 47%;
+        left: 40%;
     }
 
     @include mid {
@@ -401,6 +416,10 @@ body.home-page {
             left: 558px;
         }
 
+        li:nth-child(9) {
+            display: none;
+        }
+
         li:nth-child(11) {
             top: 4750px;
         }
@@ -426,10 +445,6 @@ body.home-page {
 
         li:nth-child(7) {
             top: 2055px;
-        }
-
-        li:nth-child(9) {
-            top: 2840px;
         }
 
         li:nth-child(11) {
@@ -699,6 +714,10 @@ body.home-page {
     .text-item {
         @include color-w(0.85);
         margin-bottom: 17px;
+
+        // @include tablet {
+        //     margin-bottom: 30px;
+        // }
     }
 }
 
@@ -734,6 +753,10 @@ body.home-page {
     top: 65px;
     padding-left: 30px;
     cursor: pointer;
+
+    @include mobile {
+        top: -10px;
+    }
 
     &:hover span {
         text-decoration: none;
@@ -1092,6 +1115,33 @@ $colWidth_2_: calc(100% - #{$colWidth_1_} - 330px);
 
         li a {
             width: 40px;
+        }
+    }
+}
+
+@include mobile {
+
+    @media (max-height: 500px){
+
+        .menu-contact-wrap {
+            margin-top: 15px;
+            @include calc(height, "100% - (75px + 150px)");
+        }
+
+        .column-foot {
+            display: none;
+        }
+
+        .menu-contact span {
+            margin-bottom: 5px;
+        }
+
+        .menu ul {
+            top: 0;
+
+            li {
+                margin-top: 27px;
+            }
         }
     }
 }

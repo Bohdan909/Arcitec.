@@ -41,15 +41,13 @@ if (!Array.prototype.indexOf) {
             sectionList.push($(this).attr(opts.section));
         });
 
-        var currentIndex = 0; // 记录当前滚动页面的index
+        var currentIndex = 0; 
         var isAnimating = false; // 记录当前页面是否在动画中，若在动画中则不再响应鼠标滚轮事件
 
-
-        // 监听鼠标滚轮事件
         $(document).on("mousewheel DOMMouseScroll MozMousePixelScroll", scrollPage);
 
         if (opts.keyboard) {
-            // 监听键盘事件
+            
             $(document).on("keydown", function(event) {
                 var code = event.keyCode;
                 if (code == 38 || code == 40) {
@@ -61,7 +59,6 @@ if (!Array.prototype.indexOf) {
             });
         }
 
-        // 是否出现导航点
         if (!opts.navigation) {
             $('#fp-nav').css('display', 'none');
         } else {
@@ -86,7 +83,6 @@ if (!Array.prototype.indexOf) {
             });
 
 
-            // 右侧锚绑定点击事件
             $('[' + opts.anchor + ']').bind("click", function(event) {
                 event.preventDefault();
                 var target = $(this).attr(opts.anchor);
@@ -100,13 +96,14 @@ if (!Array.prototype.indexOf) {
 
         // function to handle mousewheel event
         function scrollPage(event) {
+            
             event.preventDefault();
             var sectionListLength = sectionList.length;
             var delta = event.originalEvent.wheelDelta || -event.originalEvent.detail;
             var nextIndex = delta > 0 ?
                 ((sectionListLength + currentIndex - 1) % sectionListLength) :
                 ((sectionListLength + currentIndex + 1) % sectionListLength);
-            // 出现首尾轮播时，判断是否允许
+            
             var isCanScroll = opts.loopScroll;
             if (currentIndex == 0 && nextIndex == sectionListLength - 1) {
                 isCanScroll = isCanScroll && opts.loopTop;

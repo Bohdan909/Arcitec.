@@ -169,7 +169,7 @@
     }
 }
 
-.quote {
+.quote-block .quote {
     @include color-b(0.6);
     width: 385px;
     position: relative;
@@ -230,7 +230,7 @@ div[data-target] {
         position: absolute;
         right: 0;
         top: 0;
-        width: 53%;
+        width: 60%;
         height: 100%;   
         z-index: 100;
 
@@ -252,6 +252,7 @@ div[data-target] {
 
             &.left {
                 left: 0;
+                width: 50.5%;
 
                 .projects-img.slide-down {
                     @include delay(0.1s);
@@ -262,7 +263,7 @@ div[data-target] {
                 right: 0;
 
                 .projects-img.slide-down {
-                    @include delay(0.2s);
+                    @include delay(0.1s);
                 }
             }
         }
@@ -356,7 +357,7 @@ div[data-target] {
     &:after {
         @extend .ps;
         left: 5%;
-        width: 35%;
+        width: 28%;
         bottom: 0;
         top: auto;
         height: 7vh;
@@ -409,7 +410,7 @@ div[data-target] {
 }
 
 .projects-slider .swiper-slide {
-    padding-right: 53%;
+    padding-right: 60%;
 
     text-align: center;
     display: -webkit-box;
@@ -470,7 +471,7 @@ div[data-target] {
         &:after {
             @extend .ps;
             @extend .circ;
-            //@include trans(0.2s);
+            @include trans(0.2s);
             @include transform(translate(-50%,-50%));
             width: 5px;
             height: 5px;
@@ -480,7 +481,7 @@ div[data-target] {
         }
 
         &.swiper-pagination-bullet-active {
-            @include transform(scale(1.2));
+            //@include transform(scale(1.2));
 
             &:after {
                 // @include transform(translate(-50%,-50%) scale(1.25));
@@ -568,7 +569,7 @@ div[data-target] {
 
 .projects-slider .swiper-button-prev {
     @extend .arrow-st-prev;
-    left: 31%;
+    left: 27%;
 
     @include mid {
         left: 43%;
@@ -581,7 +582,7 @@ div[data-target] {
 
 .projects-slider .swiper-button-next {
     @extend .arrow-st-next;
-    left: 35%;
+    left: 30%;
 
     @include mid {
         left: 47%;
@@ -594,7 +595,7 @@ div[data-target] {
 
 .slide-socket {
     position: absolute;
-    width: 40%;
+    width: 33%;
     top: 0;
     left: 0;
     //bottom: 75px;
@@ -801,6 +802,7 @@ div[data-target] {
         display: block;
         padding-left: 22px;
         color: #fff;
+        text-transform: uppercase;
     }
 
     &:hover { // HOVER
@@ -837,6 +839,7 @@ div[data-target] {
 
         span {
             padding-left: 12px;
+            font-size: 11px;
         }
 
         &:hover {

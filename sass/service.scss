@@ -39,17 +39,23 @@
         bottom: auto;
     }
 
-    @include mid {
+    @media (max-width: 1300px){
 
         .page-title-wrap {
-            padding-right: 40px;
-            padding-left: 40px;
 
             .quote-block .author {
                 position: static;
                 width: auto;
                 padding: 10px 30px 0 0;
             }
+        }
+    }
+
+    @include mid {
+
+        .page-title-wrap {
+            padding-right: 40px;
+            padding-left: 40px;
         }
     }
 
@@ -416,7 +422,7 @@
         height: $buttonHeight;
         cursor: pointer;
         margin-bottom: 19vh;
-        font-family: $bold;
+        font-family: $roman;
         font-size: 25px;
         line-height: 44px;
         padding-left: 16%;
