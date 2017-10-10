@@ -31,7 +31,7 @@
 						<a href="index.htm">Главная</a>
 					</li>
 					<li>
-						<a href="index.htm">Студия</a>
+						<a href="home.htm">Студия</a>
 					</li>
 					<li  class="is-active">
 						<a href="projects.htm">Проекты</a>
@@ -55,8 +55,20 @@
 
 			<div class="menu-ext">
 				<div class="menu-column feedback">
-					<div class="column-title">
+
+					<div class="feedback-title column-title">
 						<span>Обратная связь</span>
+					</div>
+
+					
+					<div class="thanks-title">
+						<div class="column-title">
+							<span>Спасибо за обращение!</span>
+						
+							<div class="title-s">
+								Наш менеджер свяжется с Вами в ближайшее время
+							</div>
+						</div>
 					</div>
 					
 					<div class="feedback-block">
@@ -74,7 +86,7 @@
 								<textarea placeholder="ваше сообщение..."></textarea>
 							</div>
 
-							<button class="btn-g btn-c" type="submit">
+							<button class="btn-send btn-g btn-c" type="submit">
 								<div class="btn-c-mask">
 									<span class="btn-bg"></span>
 									<span class="btn-bg-hover"></span>
@@ -120,19 +132,19 @@
 					<div class="column-foot">
 						<ul class="social">
 							<li>
-								<a href=""><img src="images/soc-1.png" alt=""></a>
+								<a href=""><img width="9" src="images/soc-w-1.svg" alt=""></a>
 							</li>
 							<li>
-								<a href=""><img src="images/soc-2.png" alt=""></a>
+								<a href=""><img width="21" src="images/soc-w-2.svg" alt=""></a>
 							</li>
 							<li>
-								<a href=""><img src="images/soc-3.png" alt=""></a>
+								<a href=""><img width="15" src="images/soc-w-3.svg" alt=""></a>
 							</li>
 							<li>
-								<a href=""><img src="images/soc-4.png" alt=""></a>
+								<a href=""><img width="12" src="images/soc-w-4.svg" alt=""></a>
 							</li>
 							<li>
-								<a href=""><img src="images/soc-5.png" alt=""></a>
+								<a href=""><img width="16" src="images/soc-w-5.svg" alt=""></a>
 							</li>
 						</ul>
 					</div>
@@ -364,6 +376,13 @@
 		            paginationClickable: true,
 		            spaceBetween: 30,
 		            mousewheelControl: true,
+		            grabCursor: true,
+		            touchEventsTarget: ".projects-slider",
+		            touchAngle: 20,
+		            iOSEdgeSwipeDetection: true,
+		            iOSEdgeSwipeThreshold: 100,
+		            resistance: false,
+		            resistanceRatio: 0.05,
 
 		            onSlideChangeStart: function(swiper){
 		                var actIndex = $(".swiper-slide-active").index() + 1;

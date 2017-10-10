@@ -1,0 +1,91 @@
+<html>
+	<head>
+		<title>PS</title>
+		<link rel="stylesheet" href="css/photo-sphere-viewer.css">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=3.0, user-scalable=yes"/>
+		
+		<script src="js/jquery.min.js"></script>
+		<script src="js/photosphere.js"></script>
+	</head>
+	<body>
+		<div id="vrview-y1" class="s_vrview" data-image="http://beshley.com/view360/images/VIRTUAL-REALITY-YACHT-1.jpg">
+			<a class="fullSizeBtn"></a>
+		</div>
+		
+		<div id="vrview-y2" class="s_vrview" data-image="http://beshley.com/view360/images/VIRTUAL-REALITY-YACHT-2.jpg">
+			<a class="fullSizeBtn"></a>
+		</div>
+		
+		<div id="vrview-y3" class="s_vrview" data-image="http://beshley.com/view360/images/VIRTUAL-REALITY-YACHT-3.jpg">
+			<a class="fullSizeBtn"></a>
+		</div>
+		
+		<div id="vrview-y4" class="s_vrview"data-image="http://beshley.com/view360/images/VIRTUAL-REALITY-YACHT-4.jpg">
+			<a class="fullSizeBtn"></a>
+		</div>
+		
+		<div id="vrview-y5" class="s_vrview" data-image="http://beshley.com/view360/images/VIRTUAL-REALITY-YACHT-5.jpg">
+			<a class="fullSizeBtn"></a>
+		</div>
+		
+		<div id="vrview-y3" class="s_vrview" data-image="http://beshley.com/view360/images/VIRTUAL-REALITY-YACHT-6.jpg">
+			<a class="fullSizeBtn"></a>
+		</div>
+		
+		<div id="vrview-y4" class="s_vrview" data-image="http://beshley.com/view360/images/VIRTUAL-REALITY-YACHT-7.jpg">
+			<a class="fullSizeBtn"></a>
+		</div>
+		
+		<script>
+
+		$('.s_vrview').on('click', '.fullSizeBtn', function(){
+			image = $(this).closest('.s_vrview').data('image');
+			location.href="http://beshley.com/view360/asset/index.html?image="+image+"&is_stereo=false&preview="+image+"&no_fullscreen=true&start_mode=2";
+			return false;
+		});
+		
+		var viewer_y1 = PhotoSphereViewer({
+			panorama: $('#vrview-y1').data('image'),
+			container: 'vrview-y1',
+			mousewheel: false,
+			time_anim: false
+		});
+		var viewer_y2 = PhotoSphereViewer({
+			panorama: $('#vrview-y2').data('image'),
+			container: 'vrview-y2',
+			mousewheel: false,
+			time_anim: false
+		});
+		var viewer_y3 = PhotoSphereViewer({
+			panorama: $('#vrview-y3').data('image'),
+			container: 'vrview-y3',
+			mousewheel: false,
+			time_anim: false
+		});
+		var viewer_y4 = PhotoSphereViewer({
+			panorama: $('#vrview-y4').data('image'),
+			container: 'vrview-y4',
+			mousewheel: false,
+			time_anim: false
+		});
+		var viewer_y5 = PhotoSphereViewer({
+			panorama: $('#vrview-y5').data('image'),
+			container: 'vrview-y5',
+			mousewheel: false,
+			time_anim: false
+		});
+		var viewer_y6 = PhotoSphereViewer({
+			panorama: $('#vrview-y6').data('image'),
+			container: 'vrview-y6',
+			mousewheel: false,
+			time_anim: false
+		});
+		var viewer_y7 = PhotoSphereViewer({
+			panorama: $('#vrview-y7').data('image'),
+			container: 'vrview-y7',
+			mousewheel: false,
+			time_anim: false
+		});
+		</script>
+	</body>
+</html>

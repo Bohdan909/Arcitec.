@@ -58,7 +58,7 @@
     .block:nth-child(1) {
         position: absolute;
         width: 837px;
-        left: -474px;
+        left: -665px;
         top: 193px;
 
         .team-items {
@@ -69,20 +69,19 @@
             position: absolute;
             width: 200px;
             top: 120px;
-            left: 595px;
+            left: 785px;
         }
 
         .image {
-            @extend .circ;
-            width: 589px;
-            height: 589px;
+            width: 755px;
+            height: 440px;
         }
 
         .panel-wrap {
             position: absolute;
             width: 415px;
             top: 590px;
-            left: 395px;
+            left: 586px;
 
             .panel-item {
                 position: static;
@@ -103,8 +102,12 @@
     .block:nth-child(2) {
         float: left;
         width: 450px;
-        margin-left: 337px;
+        margin-left: 333px;
         padding-right: 159px;
+
+        p {
+            padding-left: 3px;
+        }
     }
 
     // Third Block
@@ -151,7 +154,7 @@
 
         .panel-wrap:nth-child(1) {
             top: 560px;
-            left: 120px;
+            left: 121px;
             width: 34%;
         }
 
@@ -187,29 +190,29 @@
         }
 
         .block:nth-child(1) {
-            left: -300px;
+            left: -462px;
 
             .team-items {
                 position: absolute;
                 display: block;
                 top: 90px;
-                left: 587px;
+                left: 833px;
             }
 
             .text-block {
                 top: 160px;
-                left: 1059px;
+                left: 1081px;
             }
 
             .image {
-                width: 500px;
-                height: 500px;
+                //width: 500px;
+                //height: 500px;
             }
 
             .panel-wrap {
                 width: 320px;
-                top: 450px;
-                left: 330px;
+                top: 415px;
+                left: 582px;
 
                 .year {
                     right: 0;
@@ -220,13 +223,13 @@
         .block:nth-child(2) {
             position: absolute;
             top: 930px;
-            left: 121px;
+            left: 117px;
             margin: 0;
         }
 
         .block:nth-child(3) {
             margin-top: 300px;
-            margin-right: 69px;
+            margin-right: 70px;
 
             img.proj-items {
                 width: 305px;
@@ -251,30 +254,40 @@
         hgroup {
             padding-left: 256px;
         }
+
+        .block-top {
+            height: 1000px;
+            padding-bottom: 0;
+        }
         
         .block:nth-child(1) {
             top: 220px;
+            left: -493px;
 
             .panel-wrap {
-                left: 320px;
+                left: 506px;
             }
 
             .text-block {
                 left: auto;
-                right: -225px;
+                top: 213px;
+                right: -418px;
             }
 
             .team-items {
-                left: 557px;
+                left: 805px;
             }
         }
 
         .block:nth-child(2) {
-            left: 81px;
+            left: 77px;
         }
 
         .block:nth-child(3) {
-            margin-right: 20px;
+            position: absolute;
+            left: 444px;
+            top: 665px;
+            margin: 0;
         }
 
         .block-bottom {
@@ -292,6 +305,10 @@
 
             .panel-wrap:nth-child(2) {
                 width: 400px;
+
+                p br {
+                    display: none;
+                }
             }
         }
     }
@@ -307,25 +324,24 @@
         
         .block:nth-child(1) {
             top: 220px;
-            left: -120px;
+            left: -216px;
 
             .image {
-                width: 230px;
-                height: 230px;
+                width: 330px;
 
                 img {
-                    width: 230px;
+                    width: 100%;
                 }
             }
 
             .team-items {
-                top: 10px;
-                left: 355px;
+                top: -40px;
+                left: 451px;
             }
 
             .text-block {
                 top: 100px;
-                left: 254px;
+                left: 350px;
                 right: auto;
             }
 
@@ -340,9 +356,15 @@
             padding: 0;
         }
 
+        .block:nth-child(2) {
+            p {
+                padding-left: 0;
+            }
+        }
+
         .block:nth-child(3) {
-            float: left;
-            margin-left: 50px;
+            top: 535px;
+            left: 50px;
 
             img.proj-items {
                 width: 220px;
@@ -453,7 +475,7 @@
 
     .quote {
         width: 425px;
-        padding-left: 4px;
+        padding-left: 3px;
 
         p {
             margin-bottom: 23px;
@@ -466,7 +488,7 @@
 
     .image {
         position: absolute;
-        width: 930px;
+        width: 940px;
         height: 504px;
         top: 130px;
         left: 622px;
@@ -505,6 +527,7 @@
         }
 
         hgroup {
+            margin-left: -1px;
             margin-bottom: 500px;
         }
 
@@ -530,7 +553,7 @@
         }
 
         .quote {
-            padding-left: 2px;
+            padding-left: 0px;
         }
     }
 }
@@ -541,8 +564,17 @@
         padding-left: 33px;
         margin-bottom: 110px;
         
+        hgroup {
+            margin-bottom: 390px;
+        }
+
         .image {
+            width: 780px;
             left: 33px;
+
+            img {
+                width: 100%;
+            }
         }
 
         .quote {
@@ -560,8 +592,12 @@
     padding-bottom: 175px;
 
     hgroup {
-        margin: 0 473px 250px 0;
+        margin: 0 472px 250px 0;
         text-align: right;
+
+        .title-s {
+            padding-right: 8px;
+        }
     }
 
     .figure {
@@ -591,7 +627,6 @@
 
         .image img {
             position: relative;
-            left: 30px;
         }
     }
 
@@ -627,7 +662,7 @@
 
     .image {
         position: relative;
-        top: -176px;
+        top: -222px;
         z-index: 2;
     }
 
@@ -721,7 +756,7 @@
 
         hgroup {
             margin-right: 0;
-            margin-left: 120px;
+            margin-left: 119px;
             text-align: left;
         }
     }
@@ -850,8 +885,6 @@
                 width: 125px;
             }
         }
-
-        
     }
 
     .team-list-wrap {
@@ -888,7 +921,11 @@
 
     hgroup {
         margin-bottom: 40px;
-        margin-left: -3px;
+        margin-left: -2px;
+
+        @include mobile {
+            margin-left: -1px;
+        }
     }
 }
 
@@ -1323,7 +1360,7 @@ $navWidth: 243px;
 
         .princ-slider-desc {
             position: static;
-            padding: 15px 2px 40px;
+            padding: 15px 1px 40px;
             width: 100%;
             border: none;
         }

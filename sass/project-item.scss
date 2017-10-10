@@ -12,14 +12,14 @@
     height: 100%;
     cursor: move;
 
-    background-size: auto 115% !important;
+    //background-size: auto 115% !important;
 }
 
-.pv-inner {
-    width: 200% !important;
-    height: 100% !important;
-    background-size: cover !important;
+.psv-navbar {
+    display: none !important;
 }
+
+
 
 .pan-ico {
     @include transform(translateY(-50%));
@@ -114,7 +114,7 @@
 }
 
 .quote-proj-block {
-    width: 45%;
+    width: 44.9%;
     padding: 110px 0 110px;
 
     .quote-proj {
@@ -184,7 +184,7 @@
         }
 
         .proj-desc {
-            left: 24%;
+            left: 23.86%;
 
             @include mobile {
                 left: 1px;

@@ -16,8 +16,6 @@
 }
 
 
-
-
 .service-page {
     
     .page-figure {
@@ -166,31 +164,59 @@
 
 .service-slider {
     border-top: 1px solid $colBor;
+    background:#f3f6f8;
 
-    &:after {
-        @extend .ps;
-        height: 1px;
-        left: $buttonWidth;
-        right: 0;
-        top: $buttonHeight;
-        background-color: $colBor;
+    // &:after {
+    //     @extend .ps;
+    //     height: 1px;
+    //     left: $buttonWidth;
+    //     right: 0;
+    //     top: $buttonHeight;
+    //     background-color: $colBor;
+
+    //     @include height_lt {
+    //         top: $buttonHeight_m;
+    //     }
+
+    //     @include s1365 {
+    //         left: $buttonWidth_m;
+    //     }
+
+    //     @include mobile {
+    //         top: $buttonHeight_mob;
+    //         left: $buttonWidth_mob;
+    //     }
+    // }
+
+    .figure-ser, .det-circle {
+        position: absolute;
+        z-index: 100;
+    }
+
+    .figure-ser {
+        bottom: -340px;
+        right: -265px;
 
         @include height_lt {
-            top: $buttonHeight_m;
-        }
-
-        @include s1365 {
-            left: $buttonWidth_m;
+            display: none;
         }
 
         @include mobile {
-            top: $buttonHeight_mob;
-            left: $buttonWidth_mob;
+            display: none;
         }
     }
 
-    #slider {
+    .det-circle {
+        top: 48vh;
+        right: 105px;
 
+        @include tablet {
+            right: 30px;
+        }
+
+        @include mobile {
+            display: none;
+        }
     }
 
     ul li.panel, div.anythingSlider {
@@ -200,11 +226,22 @@
     ul li.panel {
         opacity: 1 !important;
         padding-left: $buttonWidth;
-        padding-top: $buttonHeight;
 
-        @include height_lt {
-            padding-top: $buttonHeight_m;
+        .title-1 {
+            display: none;
         }
+
+        .det-circle {
+            position: absolute;
+            top: 65px;
+            right: 100px;
+        }
+
+       
+
+        // @include height_lt {
+        //     padding-top: $buttonHeight_m;
+        // }
 
         @include s1365 {
             padding-left: $buttonWidth_m;
@@ -212,7 +249,7 @@
 
         @include mobile {
             padding-left: $buttonWidth_mob;
-            padding-top: $buttonHeight_mob;
+            // padding-top: $buttonHeight_mob;
         }
 
         // -webkit-clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
@@ -230,6 +267,39 @@
             
         }
     }
+    
+    
+    ul li {
+
+        .title-1 {
+            display: none;
+        }
+
+        p {
+            margin-bottom: 20px;
+        }
+
+        @include mobile {
+
+            
+
+            .title-1 {
+                padding: 35px 20px;
+                font-size: 21px;
+                display: block;
+                text-align: left;
+                letter-spacing: 1px;
+                color: #fff;
+                text-transform: none;
+
+                background-image: -moz-linear-gradient( 0deg, rgb(193,230,247) 0%, rgb(4,134,193) 100%);
+                background-image: -webkit-linear-gradient( 0deg, rgb(193,230,247) 0%, rgb(4,134,193) 100%);
+                background-image: -ms-linear-gradient( 0deg, rgb(193,230,247) 0%, rgb(4,134,193) 100%);
+
+            }
+        }
+    }
+    
 
     // SWIPER //
     // .swiper-wrapper {
@@ -298,8 +368,8 @@
 .service-image {
     //@include transition(all, 0.01s, linear);
     // @include delay(0.6s);
-    width: 520px;
-    height: 520px;
+    height: 40vh;
+    width: 100%;
     background-size: cover !important;
     background-position: 50% 0 !important;
 
@@ -315,39 +385,48 @@
         clip-path: polygon(0 100%, 100% 100%, 100% 100%, 0 100%);
     }
 
-    @include height_lt {
-        height: 77vh;
-    }
+    // @include height_lt {
+    //     height: 77vh;
+    // }
 
     @include tablet {
-        width: 45vw;
-        height: 45vw;
+        // width: 45vw;
+        // height: 45vw;
     }
 
     @include mobile {
-        width: 66vw;
-        height: 66vw;
+        // width: 66vw;
+        height: 200px;
     }
 }
 
+.service-main {
+    position: relative;
+}
+
 .service-text {
-    @include transform(translateX(200px));
-    position: absolute;
+    // @include transform(translateX(200px));
+    //position: absolute;
+    //width: 467px;
+    // top: 29vh;
+    // left: calc(#{$buttonWidth} + 467px);
+    // left: -webkit-calc(#{$buttonWidth} + 467px);
     opacity: 0;
     z-index: 1;
-    width: 467px;
-    top: 29vh;
-    left: calc(#{$buttonWidth} + 467px);
-    left: -webkit-calc(#{$buttonWidth} + 467px);
-    padding: 38px 50px 30px;
-    background-color: #fff;
+    padding: 50px 150px 0 75px;
     text-align: left;
-    box-shadow: 0px 24px 73px 0px rgba(20, 25, 40, 0.04);
-    -webkit-box-shadow: 0px 24px 73px 0px rgba(20, 25, 40, 0.04);
 
-    transition: opacity 0.4s, transform 0.7s ease-out;
-    -ms-transition: opacity 0.4s, transform 0.7s ease-out;
-    -webkit-transition: opacity 0.4s, transform 0.7s ease-out;
+    // background-color: #fff;
+    // box-shadow: 0px 24px 73px 0px rgba(20, 25, 40, 0.04);
+    // -webkit-box-shadow: 0px 24px 73px 0px rgba(20, 25, 40, 0.04);
+
+    // transition: opacity 0.4s, transform 0.7s ease-out;
+    // -ms-transition: opacity 0.4s, transform 0.7s ease-out;
+    // -webkit-transition: opacity 0.4s, transform 0.7s ease-out;
+
+    transition: opacity 0.4s;
+    -ms-transition: opacity 0.4s;
+    -webkit-transition: opacity 0.4s;
 
 
     .swiper-slide-active &, .activePage & {
@@ -355,20 +434,51 @@
         opacity: 1;
     }
 
-    .title-s {
-        color: $colDark;
+    .title-ser {
+        font-family: $roman;
+        font-size: 25px;
+        line-height: 30px;
         margin-bottom: 17px;
+
+        @include tablet {
+            font-size: 20px;
+            line-height: 26px;
+        }
     }
 
+    ul {
+        padding-bottom: 28px;
+
+        li {
+            @include color-b(0.55);
+            font-size: 17px;
+            line-height: 27px;
+        }
+    }
+
+    p {
+        //line-height: 24px;
+    }
+
+    // @include height_lt {
+    //     top: 23vh;
+    // }
+
     @include height_lt {
-        top: 23vh;
+        padding: 25px 200px 0 30px;
+
+        p, ul li {
+            font-size: 15px;
+            line-height: 22px;
+        }
     }
 
     @include s1365 {
-        width: 33vw;
-        left: calc(#{$buttonWidth_m} + 420px);
-        left: -webkit-calc(#{$buttonWidth_m} + 420px);
-        padding: 28px 35px 25px;
+        // width: 33vw;
+        // left: calc(#{$buttonWidth_m} + 420px);
+        // left: -webkit-calc(#{$buttonWidth_m} + 420px);
+        padding-left: 40px;
+        padding-top: 35px;        
     }
 
     @include tablet {
@@ -377,22 +487,15 @@
     }
 
     @include mobile {
-        top: 47vh;
-        width: 54vw;
         padding: 20px;
-        left: auto;
-        right: 10px;
-
-        @media (min-height: 750px){
-            width: 48vw;
-        }
+        opacity: 1;
 
         .title-s {
             margin-bottom: 8px;
         }
 
-        p {
-            font-size: 12px;
+        p, ul li {
+            font-size: 14px;
             line-height: 20px !important;
         }
     }
@@ -404,6 +507,8 @@
     width: $buttonWidth;
     top: 0;
     left: 0;
+    bottom: 0;
+    background-color: #fff;
 
     &:before {
         @extend .ps;
@@ -521,7 +626,7 @@
     }
 
     @include mobile {
-        width: $buttonWidth_mob;
+        display: none;
 
         li {
             font-size: 13px !important;
@@ -534,5 +639,12 @@
                 top: -webkit-calc(#{$buttonHeight_mob} + 2vh);
             }
         }
+    }
+}
+
+
+.section-service {
+    @include mobile {
+        height: auto !important;
     }
 }

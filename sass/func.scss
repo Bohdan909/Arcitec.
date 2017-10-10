@@ -376,6 +376,10 @@ $buttonHeight_mob: 15vh;
 
 .scroll-hidden-y {
     overflow-y: hidden;
+
+    @include tablet {
+        overflow-y: auto;
+    }
 }
 
 @mixin color-w($opacity){

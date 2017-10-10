@@ -9,22 +9,21 @@ document.documentElement.className = document.documentElement.className.replace(
              $sectionAnimate.classList.add("animate");
         }
 
-         setTimeout( () => {
+        $("html, body").animate({scrollTop: 0}, 10);   
+
+        setTimeout( () => {
             $(".preloader").fadeOut(500);
         }, 500);
     }
 
     $(document).ready(function(){
 
-       
-
-        $("html, body").animate({scrollTop: 0}, 50);    
-
-        var $btnMenu  = document.querySelector(".btn-menu");
-        var $menu     = document.querySelector(".menu");
-        var $menuExt  = document.querySelector(".menu-ext");
-        var $html     = document.querySelector("html");
-        var $body     = document.querySelector("body");
+        var $btnMenu     = document.querySelector(".btn-menu");
+        var $btnFeedback = document.querySelector(".btn-feedback");
+        var $menu        = document.querySelector(".menu");
+        var $menuExt     = document.querySelector(".menu-ext");
+        var $html        = document.querySelector("html");
+        var $body        = document.querySelector("body");
 
 
         // HEADER
@@ -127,6 +126,18 @@ document.documentElement.className = document.documentElement.className.replace(
                 ($html.className.match(/\bmenu-open\b/)) ? menu.close() : menu.open()
             });
 
+            if (document.body.contains($btnFeedback)){
+                $btnFeedback.addEventListener("click", () => {
+                    if ($html.className.match(/\bmenu-open\b/)) {
+                        menu.close();
+                        menu.closeExt();
+                    } else {
+                        menu.open();
+                        menu.openExt();
+                    }
+                });
+            };
+
 
             // Menu Extend    
             var $btnExt = document.getElementById("btn-feedback");
@@ -158,6 +169,17 @@ document.documentElement.className = document.documentElement.className.replace(
                     {left: 0, width: '100%', height: 1, color: lineCol, hidden: true, animation: { duration: 700, easing: 'easeInOutExpo', delay: 500, direction: 'LeftRight' }}
                 ]
             });
+
+            // Form Send
+            var $btnSend  = document.querySelector(".btn-send");
+
+            $btnSend.addEventListener("click", function(e){
+                $html.classList.add("thanks");
+
+                e.preventDefault();
+            });
+
+
         }());
 
         // Full Page
@@ -194,8 +216,6 @@ document.documentElement.className = document.documentElement.className.replace(
         // });
         
     });
-
-
 
 
     // forEach for IE
@@ -316,25 +336,24 @@ if (!Array.prototype.indexOf) {
 };
 
 (function($, window) {
-    //'use strict';
+
     $.fn.singlefull = function(options) {
 
         var opts = $.extend({}, $.fn.singlefull.defaults, options);
 
-        var sectionList = []; // 页面section名称集合
+        var sectionList = []; 
         $("[" + opts.section + "]").each(function(index, elem) {
             sectionList.push($(this).attr(opts.section));
         });
 
-        var currentIndex = 0; // 记录当前滚动页面的index
-        var isAnimating = false; // 记录当前页面是否在动画中，若在动画中则不再响应鼠标滚轮事件
+        var currentIndex = 0; 
+        var isAnimating = false; 
 
 
-        // 监听鼠标滚轮事件
         $(document).on("mousewheel DOMMouseScroll MozMousePixelScroll", scrollPage);
 
         if (opts.keyboard) {
-            // 监听键盘事件
+
             $(document).on("keydown", function(event) {
                 var code = event.keyCode;
                 if (code == 38 || code == 40) {
@@ -346,7 +365,6 @@ if (!Array.prototype.indexOf) {
             });
         }
 
-        // 是否出现导航点
         if (!opts.navigation) {
             $('#fp-nav').css('display', 'none');
         } else {
@@ -371,7 +389,6 @@ if (!Array.prototype.indexOf) {
             });
 
 
-            // 右侧锚绑定点击事件
             $('[' + opts.anchor + ']').bind("click", function(event) {
                 event.preventDefault();
                 var target = $(this).attr(opts.anchor);
@@ -392,7 +409,7 @@ if (!Array.prototype.indexOf) {
             var nextIndex = delta > 0 ?
                 ((sectionListLength + currentIndex - 1) % sectionListLength) :
                 ((sectionListLength + currentIndex + 1) % sectionListLength);
-            // 出现首尾轮播时，判断是否允许
+
             var isCanScroll = opts.loopScroll;
             if (currentIndex == 0 && nextIndex == sectionListLength - 1) {
                 isCanScroll = isCanScroll && opts.loopTop;
@@ -411,11 +428,11 @@ if (!Array.prototype.indexOf) {
         function goToSection(secName, opts) {
             // get the position of the target
             var targetPosition = $('[' + opts.section + '="' + secName + '"]').position().top;
-            // 当前页面正在动画时，不响应此次事件
             if (!isAnimating) {
                 isAnimating = true;
                 currentIndex = sectionList.indexOf(secName);
                 changeAnchorClass();
+
                 // jQuery Easing animation
                 $("html,body").animate({
                     scrollTop: targetPosition
@@ -424,7 +441,7 @@ if (!Array.prototype.indexOf) {
                     easing: opts.easing,
                     
                     complete: function() {
-                        isAnimating = false; // 动画完成，解除锁定
+                        isAnimating = false; 
 
                         
                     }
@@ -433,7 +450,6 @@ if (!Array.prototype.indexOf) {
         }
 
 
-        // 改变锚的样式
         function changeAnchorClass() {
             if ($('[' + opts.anchor + ']').length) {
                 $('[' + opts.anchor + ']').removeClass('active');
@@ -536,9 +552,9 @@ if (!Array.prototype.indexOf) {
         loopBottom: true, 
 
         // ************  Navigation  **********//
-        navigation: true, // 是否允许出现导航点
-        navigationPosition: 'right', // 导航点的位置，默认在右边
-        // 根据屏幕大小决定图片的前缀
+        navigation: true, 
+        navigationPosition: 'right', 
+
         sufixes: {
             smallest: "-smallest",
             small: "-small",
