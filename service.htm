@@ -122,7 +122,7 @@
 						</div>
 						<div class="menu-contact">
 							<span>E-mail</span>
-							<div>mail@gmail.com</div>
+							<div>ADesKiev@gmail.com</div>
 						</div>
 						<div class="menu-contact">
 							<span>skype</span>
@@ -131,22 +131,23 @@
 					</div>
 
 					<div class="column-foot">
+						
 						<ul class="social">
 							<li>
-								<a href=""><img width="9" src="images/soc-w-1.svg" alt=""></a>
+								<a href="https://www.facebook.com/ArchitecDesignKiev/"><img width="9" src="images/soc-w-1.svg" alt=""></a>
 							</li>
 							<li>
-								<a href=""><img width="21" src="images/soc-w-2.svg" alt=""></a>
+								<a href="https://www.behance.net/architecdesign"><img width="21" src="images/soc-w-2.svg" alt=""></a>
 							</li>
 							<li>
-								<a href=""><img width="15" src="images/soc-w-3.svg" alt=""></a>
+								<a href="http://www.houzz.ru/pro/architecdesign"><img width="23" src="images/soc-w-6.svg" alt=""></a>
 							</li>
 							<li>
-								<a href=""><img width="12" src="images/soc-w-4.svg" alt=""></a>
+								<a href="https://ru.pinterest.com/ArchitecDesignKiev/"><img width="12" src="images/soc-w-4.svg" alt=""></a>
 							</li>
-							<li>
+							<!-- <li>
 								<a href=""><img width="16" src="images/soc-w-5.svg" alt=""></a>
-							</li>
+							</li> -->
 						</ul>
 					</div>
 				</div>
@@ -179,10 +180,14 @@
 						<div class="a-left">
 							<div class="quote-block">
 								<div class="quote">
+									
+								</div>
+								<div class="author">олег киселев</div>
+
+								<div class="quote-hide">
 									Работа дизайнера имеет смысл, только если <br>
 									она воплощена в жизнь.
 								</div>
-								<div class="author">олег киселев</div>
 							</div>
 						</div>	
 
@@ -340,7 +345,7 @@
 
 	               			<div class="service-text">
 	               				<p>
-	               					Стоимость ремонтных работ рассчитывается по дизайн проекту. В зависимости от сложности проекта может колебатся, но в среднем это 200-300 долл за м2. 
+	               					Стоимость ремонтных работ рассчитывается по дизайн проекту. В зависимости от сложности проекта может колебаться, но в среднем это 200-300 долл за м2. 
 	               					
 	               				</p>
 
@@ -370,12 +375,23 @@
 		<script src="./js/anime.min.js"></script> 
 		<script src="./js/swiper.jquery.min.js"></script> 
 		<script src="./js/lines.js"></script> 
-		<script src="./js/parallax.js"></script> 
+		<script src="./js/parallax.js"></script>		
+		<script src="./js/jquery.typetype.min.js"></script> 
 		<script src="./js/scripts.js"></script> 
 
 		<script src="./js/jquery.anythingslider.min.js"></script> 
 		<script>
 			$(function(){
+
+				var quote = $(".quote-hide").text();
+
+				$(".quote").typetype(
+					quote,
+					{
+						e: 0,
+						t: 35
+					}
+				);
 
 				function slider(){
 					

@@ -1,0 +1,211 @@
+
+// IE10-11
+@include ie10 {
+
+    .animate .fade-in, .animate.fade-in, .fade-in {
+        opacity: 1;
+    }
+
+    .slide-up {
+        transform: translate3d(0, 0, 0);
+        -ms-transform: translate3d(0, 0, 0);
+        -webkit-transform: translate3d(0, 0, 0);
+    }
+
+    @keyframes slide-up {
+      from {
+        transform: translate3d(0, 0, 0);
+        visibility: visible;
+      }
+
+      to {
+        transform: translate3d(0, 0, 0);
+      }
+    }
+
+    .mask {
+        opacity: 0;
+
+        &.animate, .return & {
+            opacity: 1;   
+        }
+    }
+
+    .section.team hgroup {
+        margin-bottom: 25px;
+    }
+
+    .team-member-inner {
+        transform: translate3d(0px, 0, 0px) !important;
+        -ms-transform: translate3d(0px, 0, 0px) !important;
+    }
+
+    .team-member {
+
+        .image {
+            top: -43px;
+            overflow: visible;
+
+            img {
+                opacity: 1 !important;
+            }
+        }
+
+        .panel-wrap {
+            bottom: -55px;
+        }
+
+        .first-letter {
+            top: 55px;
+        }
+
+        .bg span {
+            height: 408px;
+        }
+    }
+
+    .team-list-container {
+        margin-top: 120px;
+    }
+
+
+
+    .princ-slider-buttons li span:after,
+    .princ-slider ul li.panel,
+    .service-slider-buttons li:after {
+        opacity: 0 !important;
+    }
+
+    .princ-slider-buttons li.is-clicked span:after,
+    .princ-slider-buttons li.is-active span:after,
+    .princ-slider ul li.panel.activePage, 
+    .princ-slider ul li.panel.slideUp,
+    .service-slider-buttons li.is-clicked:after {
+        opacity: 1 !important;
+    }
+
+    .panel-like {
+        margin: 30px 0 60px;
+    }
+
+    .section.about .block-bottom :nth-child(1).panel-wrap {
+
+        @include tablet {
+            top: 750px;
+        }
+
+        @include mobile {
+            top: 550px;
+        }
+    }
+
+    .section.clients hgroup {
+        margin-bottom: 600px;
+    }
+
+    @include tablet {
+
+        .section.about .block-bottom {
+            height: 1020px;
+        }
+    }
+
+    @include mobile {
+
+        .team-member-inner {
+            overflow: hidden;
+        }
+
+        .team-member .image {
+            top: 0 !important;
+        }
+    }
+}
+
+// Edge
+@supports (-ms-ime-align:auto) {
+
+    .animate .fade-in, .animate.fade-in, .fade-in {
+        opacity: 1;
+    }
+
+    .slide-up {
+        transform: translate3d(0, 0, 0);
+        -ms-transform: translate3d(0, 0, 0);
+        -webkit-transform: translate3d(0, 0, 0);
+    }
+
+    @keyframes slide-up {
+      from {
+        transform: translate3d(0, 0, 0);
+        visibility: visible;
+      }
+
+      to {
+        transform: translate3d(0, 0, 0);
+      }
+    }
+
+    .mask {
+        opacity: 0;
+
+        &.animate, .return & {
+            opacity: 1;   
+        }
+    }
+
+    .section.team hgroup {
+        margin-bottom: 25px;
+    }
+
+    .team-member-inner {
+        transform: translate3d(0px, 0, 0px) !important;
+        -ms-transform: translate3d(0px, 0, 0px) !important;
+    }
+
+    .team-member {
+
+        .image {
+            top: -43px;
+            overflow: visible;
+
+            img {
+                opacity: 1 !important;
+            }
+        }
+
+        .panel-wrap {
+            bottom: -55px;
+        }
+
+        .first-letter {
+            top: 55px;
+        }
+
+        .bg span {
+            height: 408px;
+        }
+    }
+
+    .team-list-container {
+        margin-top: 120px;
+    }
+
+    .princ-slider-buttons li span:after,
+    .princ-slider ul li.panel,
+    .service-slider-buttons li:after {
+        opacity: 0 !important;
+    }
+
+    .princ-slider-buttons li.is-clicked span:after,
+    .princ-slider-buttons li.is-active span:after,
+    .princ-slider ul li.panel.activePage, 
+    .princ-slider ul li.panel.slideUp,
+    .service-slider-buttons li.is-clicked:after {
+        opacity: 1 !important;
+    }
+
+    .panel-like {
+        margin: 30px 0 60px;
+    }
+}

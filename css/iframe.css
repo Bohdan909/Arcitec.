@@ -1,0 +1,3 @@
+iframe #watermark, .webvr-button {
+    display: none !important;
+}

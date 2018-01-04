@@ -1,6 +1,9 @@
 $(window).on("scroll", function(e){
-    parallaxScroll();
-    animate();
+
+    if (!$("html").hasClass("ie11") && !$("html").hasClass("edge")){
+        parallaxScroll();
+        animate();
+    } 
 });
 
 function parallaxScroll(){

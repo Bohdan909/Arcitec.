@@ -1,18 +1,70 @@
 document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '');
 
 (function($){
+    
+    // IE Detect
+    if (document.documentMode===10){
+        document.documentElement.className+=' ie10';
+    } else if (document.documentMode===11){
+        document.documentElement.className+=' ie11';
+    } else if (document.documentMode || /Edge/.test(navigator.userAgent)) {
+        document.documentElement.className+=' edge';
+    }
+
+    // Viewport
+    var viewport = document.querySelector("meta[name=viewport]");
+
+    if (window.screen.availWidth === 320){
+        //viewport.setAttribute('content', 'width=375, user-scalable=no');
+
+        var swidth = window.screen.width;
+
+        updateOrientation();
+
+        window.addEventListener('orientationchange', updateOrientation, false);
+
+        function updateOrientation() {
+            //var viewport = document.querySelector("meta[name=viewport]");
+
+            //var mq = window.matchMedia("(orientation: landscape)");
+
+            if (!window.matchMedia("(orientation: landscape)").matches){
+                viewport.setAttribute('content', 'width=device-width');
+                $(".header-title").text("1");
+            } else {
+                viewport.setAttribute('content', 'width=375, user-scalable=no');
+            }
+
+            // switch (window.orientation){
+            //     case 0: 
+            //         viewport.setAttribute('content', 'width=375, user-scalable=no');
+            //     break;
+
+            //     case 90: case -90: 
+            //         viewport.setAttribute('content', 'width=device-width');
+            //     break;
+
+            //     default:
+            //         viewport.setAttribute('content', 'width=375, user-scalable=no')
+            //     break;
+            // }
+        }
+    }
+
+
+    
 
     window.onload = function(){
         var $sectionAnimate = document.querySelector(".section-animate");
 
-        if (document.body.contains($sectionAnimate)){
-             $sectionAnimate.classList.add("animate");
-        }
-
         $("html, body").animate({scrollTop: 0}, 10);   
 
-        setTimeout( () => {
+        setTimeout( function() {
             $(".preloader").fadeOut(500);
+
+            if (document.body.contains($sectionAnimate)) 
+                $sectionAnimate.classList.add("animate");
+                
         }, 500);
     }
 
@@ -25,7 +77,6 @@ document.documentElement.className = document.documentElement.className.replace(
         var $html        = document.querySelector("html");
         var $body        = document.querySelector("body");
 
-
         // HEADER
         (function(){
 
@@ -33,11 +84,11 @@ document.documentElement.className = document.documentElement.className.replace(
             var $skip = document.querySelector(".skip");
 
             if (document.body.contains($skip)){
-                $skip.addEventListener("click", () => {
+                $skip.addEventListener("click", function() {
 
                     document.querySelector(".header-mask").classList.add("return"); 
 
-                    setTimeout( () => { menu.addScroll() }, 2000);
+                    setTimeout( function() { menu.addScroll() }, 2000);
 
                     menu.close();
                 });
@@ -61,15 +112,15 @@ document.documentElement.className = document.documentElement.className.replace(
                         textToggle($btnExt);
                         this.closeExt();
 
-                        setTimeout( () => {
-                            this.remClassMenuOpen();
+                        setTimeout( function(){
+                            menu.remClassMenuOpen();
                         }, 1100);
 
                     } else {
                         this.remClassMenuOpen();
                     }
 
-                    if (this.scroll) setTimeout( () => { this.addScroll() }, 1200);
+                    if (this.scroll) setTimeout( function() { menu.addScroll() }, 1200);
 
                 },
 
@@ -78,7 +129,7 @@ document.documentElement.className = document.documentElement.className.replace(
                     $html.classList.remove("menu-ext-close");
                     
                     setTimeout(
-                        () => {
+                        function() {
                             lineMaker.animateLinesIn();
                             $menu.style.background = "none";
                             $menuExt.style.background = "none";
@@ -95,7 +146,7 @@ document.documentElement.className = document.documentElement.className.replace(
                    
                     lineMaker.animateLinesOut();
 
-                    setTimeout( () => {
+                    setTimeout( function() {
                         $html.classList.remove("menu-ext-open");
                     }, 250);
 
@@ -121,64 +172,78 @@ document.documentElement.className = document.documentElement.className.replace(
                 }
             }
 
+            if (document.body.contains($btnMenu)){
+                $btnMenu.addEventListener("click", function() {
+                    ($html.className.match(/\bmenu-open\b/)) ? menu.close() : menu.open()
+                });
+            } 
 
-            $btnMenu.addEventListener("click", () => {
-                ($html.className.match(/\bmenu-open\b/)) ? menu.close() : menu.open()
-            });
+            if (document.body.contains($btnFeedback)){ 
 
-            if (document.body.contains($btnFeedback)){
-                $btnFeedback.addEventListener("click", () => {
-                    if ($html.className.match(/\bmenu-open\b/)) {
+                $btnFeedback.addEventListener("click", function() {
+                    
+                    if ($html.className.match(/\bmenu-open\b/)){
                         menu.close();
                         menu.closeExt();
                     } else {
                         menu.open();
                         menu.openExt();
+                        menu.scroll = true;
+                        textToggle($btnExt);
                     }
                 });
-            };
+            }
 
-
-            // Menu Extend    
+            // Menu Extend   
             var $btnExt = document.getElementById("btn-feedback");
 
-            $btnExt.addEventListener("click", function(){
-                textToggle(this);
+            if (document.body.contains($btnExt)){
+                $btnExt.addEventListener("click", function(){
+                    textToggle(this);
 
-                ($html.className.match(/\bmenu-ext-open\b/)) ? menu.closeExt() : menu.openExt()
-            });
+                    ($html.className.match(/\bmenu-ext-open\b/)) ? menu.closeExt() : menu.openExt()
+                });
 
+            }
+            
             function textToggle(btn){
                 var textBtnCont = btn.querySelector("i");
                 var textBtn     = textBtnCont.innerHTML; 
                 var textClose   = textBtnCont.getAttribute("data-close-text");
 
-                textBtnCont.innerHTML = textClose;
+                setTimeout(function(){
+                    textBtnCont.innerHTML = textClose;
+                }, 1400);
+
                 textBtnCont.setAttribute("data-close-text", textBtn);
             };
 
             // Lines
-            var lineCol = 'rgba(255,255,255,0.2)';
-            var lineMaker = new LineMaker({
-                parent: { element: document.querySelector(".menu-wrap"), position: 'append' },
-                lines: [
-                    {top: 0, left: '49vw', width: 1, height: '100%', color: lineCol, hidden: true, animation: { duration: 400, easing: 'easeInOutSine', delay: 0, direction: 'TopBottom' }},
-                    {top: 0, right: '330px', width: 1, height: '100%', color: lineCol, hidden: true, animation: { duration: 400, easing: 'easeInOutSine', delay: 0, direction: 'TopBottom' }},
-                    
-                    {top: '17vh', left: 0, width: '100%', height: 1, color: lineCol, hidden: true, animation: { duration: 700, easing: 'easeInOutExpo', delay: 500, direction: 'LeftRight' }},
-                    {left: 0, width: '100%', height: 1, color: lineCol, hidden: true, animation: { duration: 700, easing: 'easeInOutExpo', delay: 500, direction: 'LeftRight' }}
-                ]
-            });
+            if (document.body.contains($btnMenu)){
+                var lineCol = 'rgba(255,255,255,0.2)';
+                var lineMaker = new LineMaker({
+                    parent: { element: document.querySelector(".menu-wrap"), position: 'append' },
+                    lines: [
+                        {top: 0, left: '49vw', width: 1, height: '100%', color: lineCol, hidden: true, animation: { duration: 400, easing: 'easeInOutSine', delay: 0, direction: 'TopBottom' }},
+                        {top: 0, right: '330px', width: 1, height: '100%', color: lineCol, hidden: true, animation: { duration: 400, easing: 'easeInOutSine', delay: 0, direction: 'TopBottom' }},
+                        
+                        {top: '17vh', left: 0, width: '100%', height: 1, color: lineCol, hidden: true, animation: { duration: 700, easing: 'easeInOutExpo', delay: 500, direction: 'LeftRight' }},
+                        {left: 0, width: '100%', height: 1, color: lineCol, hidden: true, animation: { duration: 700, easing: 'easeInOutExpo', delay: 500, direction: 'LeftRight' }}
+                    ]
+                });
+            };
+            
 
             // Form Send
-            var $btnSend  = document.querySelector(".btn-send");
+            if (document.body.contains($btnSend)){ 
+                var $btnSend  = document.querySelector(".btn-send");
 
-            $btnSend.addEventListener("click", function(e){
-                $html.classList.add("thanks");
+                $btnSend.addEventListener("click", function(e){
+                    $html.classList.add("thanks");
 
-                e.preventDefault();
-            });
-
+                    e.preventDefault();
+                });
+            }
 
         }());
 
@@ -192,29 +257,6 @@ document.documentElement.className = document.documentElement.className.replace(
            $(this).attr("placeholder",$(this).data("placeholder"));
         });
 
-        
-
-        // var swiper = new Swiper('.service-slider', {
-        //     pagination: '.swiper-pagination',
-        //     paginationClickable: true,
-        //     speed: 100,
-        //     parallax: true,
-        //     longSwipesRatio: 0.2,
-        //     loop: false,
-        //     slidesPerView: 1,
-        //     paginationClickable: true,
-        //     mousewheelControl: true,
-        //     effect: "fade",
-
-        //     paginationBulletRender: function (swiper, index, className) {
-        //         return '<span class="' + className + '">' + (index + 1) + '</span>';
-        //     },
-
-        //     fade: {
-        //         crossFade: false
-        //     }
-        // });
-        
     });
 
 
@@ -225,79 +267,80 @@ document.documentElement.className = document.documentElement.className.replace(
     }());
 
     // Scroll
-    var win = $(window)
-            , target = $('body')
-            , wrapper = target.find('.scroll-wrap')
-            , easing = "cubic-bezier(0.165, 0.84, 0.44, 1)" 
-            , duration = "1.2s" 
-            , top = 0
-            , resizeTimeout
-            , jmScroll = {
-                _init: function() {
-                    if( wrapper.length == 1 ) {
-                        target.css({
-                            margin: '0',
-                            padding: '0',
-                            width: '100%',
-                            height: wrapper.height() + 'px'
-                        });
-                        
-                        wrapper.css({
-                            transition: 'transform ' + duration + ' ' + easing,
-                            position: 'fixed',
-                            top: '0',
-                            left: '0',
-                            width: '100%',
-                            padding: '0',
-                            zIndex: '2',
-                            display: 'block',
-                            backfaceVisibility: 'hidden'
-                        });
+    if (!$("html").hasClass("ie11") && !$("html").hasClass("edge")){
+        var win = $(window)
+                , target = $('body')
+                , wrapper = target.find('.scroll-wrap')
+                , easing = "cubic-bezier(0.165, 0.84, 0.44, 1)" 
+                , duration = "1.2s" 
+                , top = 0
+                , resizeTimeout
+                , jmScroll = {
+                    _init: function() {
+                        if( wrapper.length == 1 ) {
+                            target.css({
+                                margin: '0',
+                                padding: '0',
+                                width: '100%',
+                                height: wrapper.height() + 'px'
+                            });
+                            
+                            wrapper.css({
+                                transition: 'transform ' + duration + ' ' + easing,
+                                position: 'fixed',
+                                top: '0',
+                                left: '0',
+                                width: '100%',
+                                padding: '0',
+                                zIndex: '2',
+                                display: 'block',
+                                backfaceVisibility: 'hidden'
+                            });
 
-                        jmScroll._reFlow(function() {
-                            jmScroll._scroll();
-                        });
-                    }
-                },
-
-                _scroll: function() {
-                    top = win.scrollTop();
-                    wrapper.css('transform', 'translateY(-' + top + 'px)');
-                },
-
-                _reFlow: function(callback) {
-                    clearTimeout(resizeTimeout);
-                    resizeTimeout = setTimeout(function() {
-                        target.height(wrapper.height());
-
-                        var getType = {};
-                        var isCallback = callback && getType.toString.call(callback) === '[object Function]';
-
-                        if(isCallback) {
-                            callback();
+                            jmScroll._reFlow(function() {
+                                jmScroll._scroll();
+                            });
                         }
-                    }, 200);
-                }
-            };
+                    },
 
-    startMomentumScroll();
+                    _scroll: function() {
+                        top = win.scrollTop();
+                        wrapper.css('transform', 'translateY(-' + top + 'px)');
+                    },
 
-    function startMomentumScroll(){
-        if (typeof window.ontouchstart == 'undefined') {
-            win.on({
-                scroll: function () {
-                    jmScroll._scroll();
-                }
-                , resize: function() {
-                    jmScroll._reFlow();
-                }
-                , load: function() {
-                    jmScroll._init();
-                }
-            });
-        }
+                    _reFlow: function(callback) {
+                        clearTimeout(resizeTimeout);
+                        resizeTimeout = setTimeout(function() {
+                            target.height(wrapper.height());
+
+                            var getType = {};
+                            var isCallback = callback && getType.toString.call(callback) === '[object Function]';
+
+                            if(isCallback) {
+                                callback();
+                            }
+                        }, 200);
+                    }
+                };
+
+        startMomentumScroll();
+
+        function startMomentumScroll(){
+            if (typeof window.ontouchstart == 'undefined') {
+                win.on({
+                    scroll: function () {
+                        jmScroll._scroll();
+                    }
+                    , resize: function() {
+                        jmScroll._reFlow();
+                    }
+                    , load: function() {
+                        jmScroll._init();
+                    }
+                });
+            }
+        }        
     }        
-            
     
     
 }(jQuery));

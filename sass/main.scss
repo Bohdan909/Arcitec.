@@ -688,14 +688,16 @@
 }
 
 .team-list-wrap {
-    width: 570px;
+    width: 600px;
 
     &:nth-child(1) {
+        width: 600px;
         margin-left: 550px;
         margin-bottom: 75px;
     }
 
     &:nth-child(2) {
+        width: 660px;
         margin-left: 120px;
     } 
 }
@@ -711,7 +713,7 @@
 
     span {
         @include color-b(0.6);
-        padding-left: 21px;
+        padding-left: 17px;
         display: block;
         font-size: 17px;
         margin-bottom: 12px;
@@ -728,7 +730,7 @@
 
 .title-line {
     position: relative;
-    padding-left: 21px;
+    padding-left: 17px;
     text-transform: uppercase;
     font-family: $textMed;
     margin-bottom: 21px;
@@ -766,6 +768,7 @@
     }
 
     .team-list-wrap {
+        width: 660px !important;
 
         &:nth-child(1) {
             margin-left: 120px;
@@ -888,23 +891,20 @@
     }
 
     .team-list-wrap {
-        width: 350px;
+        width: 350px !important;
         margin-left: 33px !important;
+        margin-bottom: 40px;
 
-        &:nth-child(1) {
-            margin-bottom: 40px;
+        .team-list {
+            flex-wrap: wrap;
 
-            .team-list {
-                flex-wrap: wrap;
+            .team-column {
+                width: 50%;
+                flex: none;
+                margin-bottom: 30px;
 
-                .team-column {
-                    width: 50%;
-                    flex: none;
-                    margin-bottom: 30px;
-
-                    &:last-child {
-                        margin-bottom: 0;
-                    }
+                &:last-child {
+                    margin-bottom: 0;
                 }
             }
         }
@@ -1064,12 +1064,19 @@ $navWidth: 243px;
     }
 
     .princ-slider-desc {
+        @extend .trans;
         @include mdl;
         width: 27%;
         right: 0px;
         padding: 0 28px 0 40px;
         border-top: 1px solid $colBor;
         overflow: hidden;
+
+        opacity: 0; 
+
+        &.show {
+            opacity: 1;
+        }
     }
 
     .princ-slider-count {
@@ -1132,7 +1139,6 @@ $navWidth: 243px;
     }
 
     div.anythingSlider { 
-
         
         .arrow  {
             cursor: pointer; 
@@ -1358,11 +1364,17 @@ $navWidth: 243px;
             height: 112px;
         }
 
+        .princ-slider-desc-wrap {
+            position: relative;
+            padding-bottom: 250px;
+        }
+
         .princ-slider-desc {
-            position: static;
             padding: 15px 1px 40px;
             width: 100%;
+            display: block;
             border: none;
+            height: auto;
         }
 
         ul li.panel, div.anythingSlider {
@@ -1669,8 +1681,150 @@ $pageNavHeight: 310px;
     }
 }
 
+.page-404, .page-404 .page-wrap, .page-404 body, .block-404,  {
+    height: 100%;
+}
+
+.block-404 {
+    background-color: #10141e;
+    overflow: hidden;
+
+    .socket {
+        padding-top: 25vh;
+        height: 100%;
+
+        @include tablet {
+            margin: 0 45px;
+        }
+
+        @include mobile {
+            width: auto;
+        }
+    }
+
+    .lines {
+        z-index: 0;
+
+        li {
+            opacity: 0.2;
+        }
+
+        li:nth-child(1) {
+            left: 420px;
+        }
+
+        li:nth-child(2) {
+            left: 528px;
+        }
+    }
+
+    .back {
+        position: absolute;
+        left: 0;
+        bottom: 42px;   
+    }
+}
+
+.text-404 {
+    color: #fff;
+    text-align: left;
+
+    b, span {
+        position: relative;
+        z-index: 1;
+    }
+
+    b {
+        font-size: 177px;
+        letter-spacing: 3px;
+        margin-bottom: 18px;
+        font-family: $bold;
+        font-weight: normal;
+
+        @media (max-height: 530px){
+            font-size: 100px;
+        }
+    }
+
+    span {
+        display: block;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+    }
+}
+
+.circle-404 {
+    position: absolute;
+    top: 25vh;
+    left: 247px;
+    width: 512px;
+    height: 354px;
+    background: url(../images/circle-404.png) no-repeat;
+
+    @media (max-height: 530px){
+        display: none;
+    }
+}
+
+.page-not-found {
+    position: absolute;
+    left: 80%;
+    top: 74vh;
+    font-size: 17px;
+    font-family: $textI;
+    color: #fff;
+
+    @include mobile {
+        left: 60%;
+    }
+}
+
+
+.back {
+    display: inline-block;
+    padding-left: 40px;
+    text-transform: uppercase;
+    color: #fff;
+    text-decoration: none;
+    letter-spacing: 1.5px;
+
+    span {
+        @extend .trans;
+        border-bottom: 1px solid rgba(255,255,255,0);
+    }
+
+    i {
+        position: absolute;
+        top: 5px;
+        left: 7px;
+        width: 20px;
+        height: 2px;
+        background-color: #fff;
+
+        &:after {
+            @include st(5px, #fff, -135deg);
+            content: "";
+            left: -7px;
+            top: -1px;
+        }
+    }
+
+    &:hover span {
+        border-bottom: 1px solid rgba(255,255,255,1);
+    }
+}
+
+@media (min-width: 768px) and (max-width: 1024px){
+    
+    .princ-slider-desc span {
+        display: none;
+    }
+}
+
 @import "projects";
 
 @import "project-item";
 
 @import "service";
+
+@import "ie";

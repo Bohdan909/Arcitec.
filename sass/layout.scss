@@ -27,6 +27,10 @@ html, body {
     width: 100%;
     //height: 100%;
     text-align: center;
+
+    // @include ie10 {
+    //     min-width: 1200px;
+    // }
 }
 
 
@@ -99,6 +103,7 @@ body.home-page {
     text-align: left;
     overflow: hidden;
 }
+
 
 .a-right, .a-left {
     @include display-flex;
@@ -530,22 +535,23 @@ body.home-page {
     }
 }
 
+.logo {
+    position: absolute;
+
+    img {
+        width: 110px;
+    }
+}
+
 .header-top {
     // position: relative;
     // z-index: 101;
 
     .logo {
-        position: absolute;
         z-index: 101;
         top: 30px;
         left: 130px;
-
-        img {
-            width: 100%;
-        }
     }
-
-    
 
     @include mid {
 
@@ -715,6 +721,7 @@ body.home-page {
     .text-item {
         @include color-w(0.85);
         margin-bottom: 17px;
+        //text-shadow: 1px 1px 1px #000;
 
         // @include tablet {
         //     margin-bottom: 30px;
@@ -755,8 +762,13 @@ body.home-page {
     padding-left: 30px;
     cursor: pointer;
 
+    @include mid {
+        left: -108px;
+    }
+
     @include mobile {
         top: -10px;
+        left: -76px;
     }
 
     &:hover span {
@@ -797,7 +809,7 @@ body.home-page {
     ------------------- */   
 
 // BUTTON
-.btn-menu-wrap {
+.btn-menu-wrap, .btn-back {
     @extend .trans;
     position: fixed;
     right: 135px;
@@ -823,10 +835,9 @@ body.home-page {
     }
 }
 
-.btn-menu { 
+
+.btn-menu, .btn-back {
     @extend .circ;
-    position: absolute;
-    right: 0;
     width: 62px;
     height: 62px;
     display: block;
@@ -834,9 +845,48 @@ body.home-page {
     background-color: #fff;
     text-align: left;
 
-
     box-shadow: 0px 12px 13px 0px rgba(20, 25, 40, 0.07);
     -webkit-box-shadow: 0px 12px 13px 0px rgba(20, 25, 40, 0.07);
+}
+
+.btn-back {
+
+    &:after {
+        @extend .ps;
+        width: 25px;
+        height: 10px;
+        top: 50%;
+        left: 50%;
+        margin: -5px 0 0 -12px;
+        background-size: 100% auto !important;
+        background-image: url(../images/arrow_back.svg);
+    }
+
+    &:hover:after {
+        animation: arrowMove 2.5s linear infinite;
+        -webkit-animation: arrowMove 2.5s linear infinite;
+        -ms-animation: arrowMove 2.5s linear infinite;
+    }
+}
+
+@keyframes arrowMove {
+    0% {
+        transform: translateX(0);
+    }
+    33% {
+        transform: translateX(-3px);
+    }
+    66% {
+        transform: translateX(3px);
+    }
+    100% {
+        transform: translateX(0);
+    }
+}
+
+.btn-menu { 
+    position: absolute;
+    right: 0;
 
     span {
         position: absolute;
@@ -1206,7 +1256,42 @@ html.thanks {
             }
         }
     }
+
+    @media (orientation: landscape){
+
+        .menu {
+
+            ul {
+                top: 50px !important;
+
+                li {
+                    display: inline-block;
+                    margin: 0 12px;
+
+                    > a {
+                        font-size: 20px;
+                    }
+                }
+            }
+        }
+
+        .column-title, .column-title span {
+            height: 60px;
+            line-height: 60px;
+        }
+
+        .menu-contact-wrap {
+            display: block;
+        }
+
+        .menu-contact {
+            display: inline-block;
+            margin: 0 8px;
+        }
+    }
 }
+
+
 
 
 // MENU EXTEND

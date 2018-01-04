@@ -31,8 +31,18 @@
         padding-left: 0;
     }
 
+    .section-top:after {
+        @extend .ps;
+        left: 0;
+        top: 50%;
+        margin-top: -300px;
+        width: 350px;
+        height: 595px;
+        background: url(../images/glare.png) no-repeat;
+    }
+
     .section-top .figure {
-        top: 45vh;
+        top: 43vh;
         right: -115px;
         bottom: auto;
     }
@@ -77,6 +87,10 @@
         .page-title-wrap {
             padding-right: 30px;
             padding-left: 30px;
+        }
+
+        .section-top:after {
+            display: none;
         }
 
         .section-top .figure {
@@ -644,6 +658,7 @@
 
 
 .section-service {
+
     @include mobile {
         height: auto !important;
     }
