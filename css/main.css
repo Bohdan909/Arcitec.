@@ -1,4 +1,4 @@
-.ps, .arrow-st:after, .swiper-button-prev:after, .swiper-button-next:after, .scroll-ico:before, .scroll-ico:after, .btn-back:after, .menu-contact div:before, .menu ul li > a:before, .menu ul li > a:after, .menu ul li.is-active a:before, #footer address a:before, .sign:after, .title-line:before, .princ-slider-buttons li span:after, .princ-slider .princ-slider-count:before, .princ-slider div.anythingSlider .arrow:after, .page-nav-arrow div:after, .page-figure span:after, .projects-slider:before, .projects-slider:after, .projects-slider .swiper-pagination:after, .projects-slider .swiper-pagination .swiper-pagination-bullet:after, .plus-item:before, .plus-item:after, .title-desc-list li:before, .det-circle:before, .det-circle:after, .image-item:after, .proj-info:before, .proj-info:after, .service-page .section-top:after, .service-letters div:after, .service-letters span:after, .service-slider-buttons:before, .service-slider-buttons li:before, .service-slider-buttons li:after {
+.ps, .arrow-st:after, .swiper-button-prev:after, .swiper-button-next:after, .scroll-ico:before, .scroll-ico:after, .btn-back:after, .menu-contact div:before, .menu ul li > a:before, .menu ul li > a:after, .menu ul li.is-active a:before, #footer address a:before, .sign:after, .title-line:before, .princ-slider-buttons li span:after, .princ-slider .princ-slider-count:before, .princ-slider div.anythingSlider .arrow:after, .page-nav-arrow div:after, .page-figure span:after, .projects-slider:before, .projects-slider:after, .projects-slider .swiper-pagination:after, .projects-slider .swiper-pagination .swiper-pagination-bullet:before, .projects-slider .swiper-pagination .swiper-pagination-bullet:after, .plus-item:before, .plus-item:after, .title-desc-list li:before, .det-circle:before, .det-circle:after, .image-item:after, .proj-info:before, .proj-info:after, .service-page .section-top:after, .service-letters div:after, .service-letters span:after, .service-slider-buttons:before, .service-slider-buttons li:before, .service-slider-buttons li:after {
   content: "";
   display: block;
   position: absolute;
@@ -89,6 +89,50 @@
 
 .no-touchevents .arrow-st:hover:after, .no-touchevents .swiper-button-prev:hover:after, .no-touchevents .swiper-button-next:hover:after {
   width: 27px; }
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    display: none; }
+  10% {
+    opacity: 0;
+    display: block; }
+  100% {
+    opacity: 1;
+    display: block; } }
+
+@keyframes fadeOut {
+  0% {
+    opacity: 1;
+    display: block; }
+  90% {
+    opacity: 0 !important;
+    display: block !important; }
+  100% {
+    opacity: 0 !important;
+    display: none !important; } }
+
+@-webkit-keyframes fadeIn {
+  0% {
+    opacity: 0;
+    display: none; }
+  10% {
+    opacity: 0 !important;
+    display: block !important; }
+  100% {
+    opacity: 1 !important;
+    display: block !important; } }
+
+@-webkit-keyframes fadeOut {
+  0% {
+    opacity: 1;
+    display: block; }
+  90% {
+    opacity: 0;
+    display: block; }
+  100% {
+    opacity: 0;
+    display: none; } }
 
 /* --------------------
     Animation
@@ -1659,7 +1703,8 @@ html.thanks .feedback-title {
   background: #fff;
   text-align: left; }
   #footer .socket {
-    width: 1240px; }
+    width: 1240px;
+    padding: 0 10px; }
   #footer .footer-main {
     height: 130px;
     padding-top: 45px;
@@ -1739,7 +1784,8 @@ html.thanks .feedback-title {
 
 @media (max-width: 1200px) {
   #footer .socket {
-    width: 1000px; }
+    width: 1000px;
+    padding: 0; }
   #footer .footer-main {
     padding-left: 260px; }
     #footer .footer-main .social {
@@ -3498,6 +3544,11 @@ div[data-target] .projects-images {
     background-color: #fff;
     z-index: 1;
     cursor: pointer; }
+    .projects-slider .swiper-pagination .swiper-pagination-bullet:before {
+      left: -7px;
+      right: -7px;
+      top: -7px;
+      bottom: -7px; }
     .projects-slider .swiper-pagination .swiper-pagination-bullet:after {
       transition: all 0.2s ease-out;
       -webkit-transition: all 0.2s ease-out;
@@ -3566,26 +3617,44 @@ div[data-target] .projects-images {
 .swiper-button-prev, .swiper-button-next {
   bottom: 2.6vh;
   top: auto;
-  z-index: 107; }
+  z-index: 107;
+  padding: 5px;
+  width: 38px;
+  height: 16px; }
+  .swiper-button-prev:before, .swiper-button-next:before {
+    left: 5px !important;
+    top: 4px !important; }
+  .swiper-button-prev:after, .swiper-button-next:after {
+    top: 6px !important;
+    right: auto !important;
+    left: 10px !important; }
   @media (max-width: 1024px) {
     .swiper-button-prev, .swiper-button-next {
       bottom: 24px;
       left: auto !important; } }
 
+.swiper-button-next:before {
+  right: 5px !important;
+  left: auto !important; }
+
+.swiper-button-next:after {
+  right: 10px !important;
+  left: auto !important; }
+
 .projects-slider .swiper-button-prev {
-  left: 27%; }
+  left: 26%; }
   @media (max-width: 1200px) {
     .projects-slider .swiper-button-prev {
-      left: 43%; } }
+      left: 42%; } }
   @media (max-width: 1024px) {
     .projects-slider .swiper-button-prev {
       right: 65px; } }
 
 .projects-slider .swiper-button-next {
-  left: 30%; }
+  left: 29%; }
   @media (max-width: 1200px) {
     .projects-slider .swiper-button-next {
-      left: 47%; } }
+      left: 46%; } }
   @media (max-width: 1024px) {
     .projects-slider .swiper-button-next {
       right: 20px; } }
@@ -4062,13 +4131,33 @@ div[data-target] .projects-images {
     .art-columns .column .proj-desc {
       width: 300px; } }
 
+.panel-like-wrap {
+  position: relative;
+  z-index: 100; }
+
+.panel-like-drop {
+  transition: all 0.6s ease-out;
+  -webkit-transition: all 0.6s ease-out;
+  -ms-transition: all 0.6s ease-out;
+  position: absolute;
+  opacity: 0;
+  padding: 22px;
+  top: 120px;
+  left: 0;
+  background-color: #fff;
+  box-shadow: 0px 24px 73px 0px rgba(20, 25, 40, 0.07);
+  -webkit-box-shadow: 0px 24px 73px 0px rgba(20, 25, 40, 0.07); }
+  .panel-like-drop.open {
+    opacity: 1; }
+
 .panel-like {
   display: inline-block;
   padding: 44px 0 0 55px;
   min-width: 345px;
   height: 100px;
   text-decoration: none;
-  z-index: 101; }
+  z-index: 101;
+  cursor: pointer; }
   .panel-like div {
     text-transform: uppercase;
     font-family: "PFDinTextCompPro-Medium";

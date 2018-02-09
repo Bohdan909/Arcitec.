@@ -332,9 +332,9 @@ $buttonHeight_mob: 15vh;
 
 // Animation
 @mixin animation($name, $duration, $func){
-    animation: $name $duration $func;
-    -ms-animation: $name $duration $func;
-    -webkit-animation: $name $duration $func;
+    animation: $name $duration $func forwards;
+    -ms-animation: $name $duration $func forwards;
+    -webkit-animation: $name $duration $func forwards;
 }
 
 @mixin animation-d($name, $duration, $func, $delay){
@@ -461,5 +461,73 @@ $buttonHeight_mob: 15vh;
         &:after {
             width: 27px;
         }
+    }
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+        display: none;
+    }
+
+    10% {
+        opacity: 0;
+        display: block;
+    }
+
+    100% {
+        opacity: 1;
+        display: block;
+    }
+}
+
+@keyframes fadeOut {
+    0% {
+        opacity: 1;
+        display: block;
+    }
+
+    90% {
+        opacity: 0 !important;
+        display: block !important;
+    }
+
+    100% {
+        opacity: 0 !important;
+        display: none !important;
+    }
+}
+
+@-webkit-keyframes fadeIn {
+    0% {
+        opacity: 0;
+        display: none;
+    }
+
+    10% {
+        opacity: 0 !important;
+        display: block !important;
+    }
+
+    100% {
+        opacity: 1 !important;
+        display: block !important;
+    }
+}
+
+@-webkit-keyframes fadeOut {
+    0% {
+        opacity: 1;
+        display: block;
+    }
+
+    90% {
+        opacity: 0;
+        display: block;
+    }
+
+    100% {
+        opacity: 0;
+        display: none;
     }
 }

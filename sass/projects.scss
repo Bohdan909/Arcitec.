@@ -541,6 +541,14 @@ div[data-target] {
         z-index: 1;
         cursor: pointer;
 
+        &:before {
+            @extend .ps;
+            left: -7px;
+            right: -7px;
+            top: -7px;
+            bottom: -7px;
+        }
+
         &:after {
             @extend .ps;
             @extend .circ;
@@ -633,6 +641,20 @@ div[data-target] {
     bottom: 2.6vh;
     top: auto;
     z-index: 107;
+    padding: 5px;
+    width: 38px;
+    height: 16px;
+
+    &:before {
+        left: 5px !important;
+        top: 4px !important;
+    }
+
+    &:after {
+        top: 6px !important;
+        right: auto !important;
+        left: 10px !important;
+    }
 
     @include tablet {
         bottom: 24px;
@@ -640,12 +662,25 @@ div[data-target] {
     }
 }
 
+.swiper-button-next {
+
+    &:before {
+        right: 5px !important;
+        left: auto !important;
+    }
+
+    &:after {
+        right: 10px !important;
+        left: auto !important;
+    }
+}
+
 .projects-slider .swiper-button-prev {
     @extend .arrow-st-prev;
-    left: 27%;
+    left: 26%;
 
     @include mid {
-        left: 43%;
+        left: 42%;
     }
 
     @include tablet {
@@ -655,10 +690,10 @@ div[data-target] {
 
 .projects-slider .swiper-button-next {
     @extend .arrow-st-next;
-    left: 30%;
+    left: 29%;
 
     @include mid {
-        left: 47%;
+        left: 46%;
     }
 
     @include tablet {

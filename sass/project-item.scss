@@ -403,7 +403,29 @@
     }
 }
 
+.panel-like-wrap {
+    position: relative;
+    z-index: 100;
+}
 
+.panel-like-drop {
+    @include trans(0.6s);
+    position: absolute;
+    opacity: 0;
+    padding: 22px;
+    top: 120px;
+    left: 0;
+    background-color: #fff;
+    box-shadow: 0px 24px 73px 0px rgba(20, 25, 40, 0.07);
+    -webkit-box-shadow: 0px 24px 73px 0px rgba(20, 25, 40, 0.07);
+
+    //display: none;
+
+    &.open {
+        opacity: 1;
+        // animation: fadeIn 0.7s linear forwards !important;
+    }
+}
 
 .panel-like {
     display: inline-block;
@@ -412,6 +434,7 @@
     height: 100px;
     text-decoration: none;
     z-index: 101;
+    cursor: pointer;
 
     div {
         @include mainText;
@@ -430,6 +453,8 @@
         display: block;
     }
 }
+
+
 
 .arw {
     position: relative;

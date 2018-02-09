@@ -340,7 +340,12 @@ document.documentElement.className = document.documentElement.className.replace(
                 });
             }
         }        
-    }        
+    }  
+
+    // Like
+    $(".panel-like").on("click", function(){
+        $(this).next().toggleClass("open");
+    });  
     
     
 }(jQuery));
